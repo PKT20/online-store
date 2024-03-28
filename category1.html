@@ -115,32 +115,12 @@
       margin: 0;
     }
 
-    /* Style for the favorite button */
-    .favorite-button {
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-      font-size: 25px;
-      cursor: pointer;
-    }
-
-    .favorite-button::before {
-      content: "\2764"; /* Unicode for heart symbol */
-      color: transparent; /* No color fill */
-    }
-
-    .favorite-button:hover {
-      color: #ff9999; /* Lighter red color on hover */
-    }
-
   </style>
 </head>
 <body>
   <!-- Back button -->
   <a href="category1.html" class="back-button">Back</a>
-  <!-- Favorites button -->
-  <a href="favorites.html" class="Favorites-button" id="favoritesButton">Favorites</a>
-
+  
   <header>
     <h1>Long Pillow</h1>
   </header>
@@ -176,7 +156,6 @@
           <h2>${product.name}</h2>
           <p>${product.description}</p>
           <p>$${product.price}</p>
-          <span class="favorite-button" onclick="addToFavorites(${product.id}, '${product.name}', '${product.description}', ${product.price}, '${product.image}', this)">&#x2764;</span>
         `;
         productElement.onclick
         = function() {
@@ -207,22 +186,6 @@
       const modal = document.getElementById('myModal');
       if (event.target === modal) {
         modal.style.display = 'none';
-      }
-    }
-
-    // Function to add product to favorites
-    function addToFavorites(productId, productName, productDescription, productPrice, productImage, button) {
-      // Retrieve existing favorites or initialize empty array
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      // Check if the product is already in favorites
-      const exists = favorites.some(item => item.id === productId);
-      if (!exists) {
-        // Add product to favorites
-        favorites.push({ id: productId, name: productName, description: productDescription, price: productPrice, image: productImage });
-        // Store favorites in local storage
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        // Change button color to red
-        button.style.color = '#ff9999';
       }
     }
 
