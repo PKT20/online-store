@@ -81,9 +81,10 @@
   </div>
 
   <!-- Modal dialog to display the larger image -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImg">
+  <div id="modal" class="modal">
+    <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
+    <img id="modal
+    -img" class="modal-content">
   </div>
 
   <script>
