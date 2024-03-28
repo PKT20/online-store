@@ -82,6 +82,15 @@
       font-size: 18px; /* Adjust the font size as needed */
       margin-top: 10px;
     }
+     /* Additional styles for mobile responsiveness */
+     @media only screen and (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+      .product {
+        width: calc(50% - 10px);
+      }
+    }
 
     /* CSS for chat toggle button */
     .chat-toggle {
@@ -168,188 +177,7 @@
 
   <!-- Modal for displaying larger image -->
   <div id="modal" class="modal">
-    <span class="close" ontouchstart="closeModal()" onclick="cl<!DOCTYPE html>
-      <html lang="en">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Online Store</title>
-        <style>
-          /* CSS for modal */
-          .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(255, 182, 193, 0.9); /* Light pink background color */
-          }
-      
-          /* Modal content */
-          .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 80%;
-            max-height: 80%;
-          }
-      
-          /* Close button */
-          .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #fff;
-            font-size: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-          }
-      
-          .close:hover,
-          .close:focus {
-            color: #bbb;
-            text-decoration: none;
-          }
-      
-          /* Product container */
-          .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around; /* Center products horizontally */
-            padding: 20px;
-          }
-      
-          .product {
-            width: 200px; /* Square size */
-            height: 200px; /* Square size */
-            margin: 10px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-            transition: transform 0.3s ease;
-          }
-      
-          .product:hover {
-            transform: translateY(-5px);
-          }
-      
-          .product img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            border-radius: 15px 15px 0 0; /* Rounded top corners for images */
-          }
-      
-          .product-details {
-            padding: 10px;
-            text-align: center;
-          }
-      
-          .product-name {
-            font-size: 18px; /* Adjust the font size as needed */
-            margin-top: 10px;
-          }
-      
-          /* CSS for chat toggle button */
-          .chat-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(to right, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            line-height: 80px; /* Vertically center text */
-            cursor: pointer;
-            z-index: 999; /* Ensure it's above other elements */
-            font-family: 'Arial', sans-serif; /* Change font if needed */
-            color: #fff; /* White color for text */
-            font-size: 15px;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-          }
-      
-          .chat-toggle:hover {
-            transform: scale(1.1); /* Scale button on hover */
-            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8); /* Increase shadow on hover */
-          }
-      
-          /* Stylish header */
-          header {
-            background-image: url('images/giftbg.jpg'); /* Add your background image path here */
-            background-size: cover; /* Cover the entire header */
-            background-position: center; /* Center the background image */
-            color: #000000; /* White header text color */
-            padding: 20px 0; /* Add padding */
-            text-align: center; /* Center align text */
-          }
-      
-          header h1 {
-            font-family: 'Pacifico', cursive; /* Fancy font */
-            font-size: 48px; /* Larger font size */
-            margin: 0; /* Remove default margin */
-          }
-        </style>
-        <!-- Link to Google Fonts for Pacifico font -->
-        <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-      </head>
-      <body>
-        <header>
-          <h1>Gift Ur Lover</h1>
-        </header>
-        <div class="container" id="product-list">
-          <div class="product" onclick="openCategory(1)">
-            <img src="images/pillow.jpg" alt="Product 1">
-            <div class="product-details">
-              <h2 class="product-name">Pillow</h2>
-              <button onclick="openCategory(1)">View Details</button>
-            </div>
-          </div>
-          <div class="product" onclick="openCategory(2)">
-            <img src="images/waterbottle.jpg" alt="Product 2">
-            <div class="product-details">
-              <h2 class="product-name">Water Bottle</h2>
-              <button onclick="openCategory(2)">View Details</button>
-            </div>
-          </div>
-          <div class="product" onclick="openCategory(3)">
-            <img src="images/keychain.jpg" alt="Product 3">
-            <div class="product-details">
-              <h2 class="product-name">Keychain</h2>
-              <button onclick="openCategory(3)">View Details</button>
-            </div>
-          </div>
-          <div class="product" onclick="openCategory(4)">
-            <img src="images/photoalbum.jpg" alt="Product 4">
-            <div class="product-details">
-              <h2 class="product-name">Photo Album</h2>
-              <button onclick="openCategory(4)">View Details</button>
-            </div>
-          </div>
-          <!-- Add more products as needed -->
-        </div>
-      
-        <!-- Modal for displaying larger image -->
-        <div id="modal" class="modal">
-          <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
-          <img id="modal-img" class="modal-content">
-        </div>
-      
-        <!-- Chat toggle button -->
-        <div class="chat-toggle" onclick="openChat()">Instagram</div>
-      
-        <script>
-          // Function to open the modal and display the larger image
-          function openModal(imageSrc) {
-            const modal = document.getElementById('modal');
-      oseModal()">&times;</span>
+    <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
     <img id="modal-img" class="modal-content">
   </div>
 
