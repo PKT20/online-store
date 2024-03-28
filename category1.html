@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Category 1</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-3sxAcvZU1M71YlSfuzixPoWjlpvj9vLEblSGLufTHyILQOku03VWDoNig2r7uLwWUwfcEFrDXfuEz6tQ73jz2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     /* Style for the modal dialog */
     .modal {
@@ -27,14 +25,13 @@
       max-height: 90%;
     }
     .container {
-      padding: 10px;
+      padding: 20px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      position: relative; /* Position for the screenshot icon */
     }
     .product {
-      height: 200px; /* Set a fixed height */
+      height: 220px; /* Set a fixed height */
       margin: 5px;
       padding: 10px;
       border: 2px solid #fff;
@@ -81,6 +78,25 @@
       text-decoration: none;
       color: #000;
     }
+    .Favorites-button {
+      position: fixed;
+      top: 20px;
+      right: 20px; /* Corrected 'Right' to 'right' */
+      z-index: 9999;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Arial', sans-serif;
+      text-decoration: none;
+      color: #fd4848;
+    }
+
+    .Favorites-button::before {
+      content: "\2665"; /* Unicode for heart symbol */
+      color: #fd4848; /* Red heart color */
+      margin-right: 5px; /* Add some space between the heart and text */
+    }
 
     /* Style for the header */
     header {
@@ -99,14 +115,22 @@
       margin: 0;
     }
 
-    /* Style for the screenshot icon */
-    .screenshot-icon {
+    /* Style for the favorite button */
+    .favorite-button {
       position: absolute;
-      top: 5px;
+      bottom: 5px;
       right: 5px;
-      color: #fff;
+      font-size: 25px;
       cursor: pointer;
-      z-index: 999;
+    }
+
+    .favorite-button::before {
+      content: "\2764"; /* Unicode for heart symbol */
+      color: transparent; /* No color fill */
+    }
+
+    .favorite-button:hover {
+      color: #ff9999; /* Lighter red color on hover */
     }
 
   </style>
@@ -114,14 +138,14 @@
 <body>
   <!-- Back button -->
   <a href="category1.html" class="back-button">Back</a>
+  <!-- Favorites button -->
+  <a href="favorites.html" class="Favorites-button" id="favoritesButton">Favorites</a>
 
   <header>
     <h1>Long Pillow</h1>
   </header>
   <div class="container" id="product-list">
     <!-- Product details will be dynamically inserted here -->
-    <!-- Screenshot icon -->
-    <i class="fas fa-camera screenshot-icon" onclick="takeScreenshot()"></i>
   </div>
 
   <!-- Modal dialog to display the larger image -->
@@ -152,7 +176,8 @@
           <h2>${product.name}</h2>
           <p>${product.description}</p>
           <p>$${product.price}</p>
-`;
+          <span class="favorite-button" onclick="addToFavorites(${product.id}, '${product.name}', '${product.description}', ${product.price}, '${product.image}', this)">&#x2764;</span>
+        `;
         productElement.onclick
         = function() {
           showModal(product.image);
@@ -162,11 +187,13 @@
     }
 
     // Function to show the modal dialog with the larger image
-    function showModal(imageUrl) {
-      const modal = document.getElementById('myModal');
-      const modalImg = document.getElementById('modalImg');
-      modalImg.src = imageUrl;
-      modal.style.display = 'block';
+    function showModal(imageUrl, fromFavoriteButton = false) {
+      if (!fromFavoriteButton) {
+        const modal = document.getElementById('myModal');
+        const modalImg = document.getElementById('modalImg');
+        modalImg.src = imageUrl;
+        modal.style.display = 'block';
+      }
     }
 
     // Close the modal when the user clicks on the close button
@@ -183,14 +210,20 @@
       }
     }
 
-    // Function to take a screenshot of the container
-    function takeScreenshot() {
-      html2canvas(document.getElementById('product-list')).then(function(canvas) {
-        var link = document.createElement('a');
-        link.download = 'screenshot.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-      });
+    // Function to add product to favorites
+    function addToFavorites(productId, productName, productDescription, productPrice, productImage, button) {
+      // Retrieve existing favorites or initialize empty array
+      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      // Check if the product is already in favorites
+      const exists = favorites.some(item => item.id === productId);
+      if (!exists) {
+        // Add product to favorites
+        favorites.push({ id: productId, name: productName, description: productDescription, price: productPrice, image: productImage });
+        // Store favorites in local storage
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        // Change button color to red
+        button.style.color = '#ff9999';
+      }
     }
 
     // Load the product elements when the page is loaded
