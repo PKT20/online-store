@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorite Page</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Import the same CSS file as longpillow.html -->
+  <style>
+    /* Additional or overridden styles specific to favorites.html can be added here */
+    body {
+      background-color: #f0f0f0; /* Set background color similar to longpillow.html */
+      font-family: Arial, sans-serif; /* Set font family */
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+    }
+
+    .container {
+      padding: 20px; /* Add padding similar to longpillow.html */
+      display: flex;
+      flex-direction: column; /* Align items in a column */
+      align-items: center; /* Center align items horizontally */
+    }
+
+    /* Style for the header */
+    header {
+      background-image: url('images/giftbg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #000000;
+      padding: 20px 0;
+      text-align: center;
+    }
+    /* Style for the back button */
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 9999;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Arial', sans-serif;
+      text-decoration: none;
+      color: #000;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      color: #000;
+      margin: 0;
+    }
+
+    #favorite-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px; /* Add padding similar to longpillow.html */
+      margin-top: 20px; /* Add margin similar to longpillow.html */
+    }
+
+    #favorite-list li {
+      margin: 10px; /* Add margin to list items */
+      padding: 10px;
+      background-color: #fff; /* Set background color for list items */
+      border: 2px solid #ccc; /* Add border to list items */
+      border-radius: 10px; /* Add border radius to list items */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow to list items */
+      width: 200px; /* Set width of list items */
+    }
+
+    #favorite-list img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px; /* Adjust border radius */
+    }
+
+    #favorite-list h2 {
+      font-size: 18px; /* Adjust font size */
+      margin: 5px 0; /* Adjust margin */
+      color: #333; /* Set heading color */
+    }
+
+    #favorite-list p {
+      font-size: 14px; /* Adjust font size */
+      margin: 5px 0; /* Adjust margin */
+      color: #666; /* Set paragraph color */
+    }
+
+    .remove-button {
+      background-color: #ff9999; /* Set button background color */
+      color: #fff; /* Set button text color */
+      border: none; /* Remove button border */
+      padding: 5px 10px; /* Add padding to button */
+      border-radius: 5px; /* Add border radius to button */
+      cursor: pointer; /* Set cursor to pointer */
+    }
+
+    .remove-button:hover {
+      background-color: #e57373; /* Change button background color on hover */
+    }
+  </style>
+</head>
+<body>
+  <!-- Header similar to longpillow.html -->
+  <header>
+    <h1>Favorite Items</h1>
+    <a href="longpillow.html" class="back-button">Back</a> <!-- Back button similar to longpillow.html -->
+  </header>
+
+  <!-- Container for favorite items -->
+  <div class="container">
+    <ul id="favorite-list">
+      <!-- Favorite items will be dynamically inserted here -->
+    </ul>
+  </div>
+
+  <script>
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const favoriteList = document.getElementById('favorite-list');
+
+    // Function to remove item from favorites
+    function removeFromFavorites(itemId) {
+      // Find the index of the item with the given id
+      const index = favorites.findIndex(item => item.id === itemId);
+      if (index !== -1) {
+        // Remove the item from the favorites array
+        favorites.splice(index, 1);
+        // Update local storage
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+        // Update the displayed list of favorites
+        displayFavorites(favorites);
+      }
+    }
+
+    // Function to display favorite items
+    function displayFavorites(favorites) {
+      favoriteList.innerHTML = ''; // Clear the current list
+      favorites.forEach(item => {
+        const li = document.createElement('li');
+        li.id = `favorite-item-${item.id}`; // Set a unique ID for each list item
+
+        const img = document.createElement('img');
+        const h2 = document.createElement('h2');
+        const pDescription = document.createElement('p');
+        const pPrice = document.createElement('p');
+        const removeButton = document.createElement('button');
+
+        img.src = item.image;
+        img.alt = item.name;
+
+        h2.textContent = item.name;
+        pDescription.textContent = item.description;
+        pPrice.textContent = `$${item.price}`;
+
+        removeButton.textContent = 'Remove';
+        removeButton.className = 'remove-button';
+        removeButton.onclick = function() {
+          removeFromFavorites(item.id);
+        };
+
+        li.appendChild(img);
+        li.appendChild(h2);
+        li.appendChild(pDescription);
+        li.appendChild(pPrice);
+        li.appendChild(removeButton);
+        
+        favoriteList.appendChild(li);
+      });
+    }
+
+    // Display favorite items initially
+    displayFavorites(favorites);
+  </script>
+</body>
+</html>
