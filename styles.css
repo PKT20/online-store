@@ -47,7 +47,7 @@ header {
 
 .product h2 {
   margin-top: 10px;
-  font-size: 1.3em; /* Larger font size */
+  font-size: 1em; /* Larger font size */
   color: #333; /* Dark text color */
 }
 
@@ -107,10 +107,4 @@ header {
 }
 .product h5 {
   margin: 10px 0; /* Add margin for spacing */
-}
-/* Media query for mobile devices */
-@media (max-width: 768px) {
-  .product {
-    width: calc(100% - 20px); /* Full width for single product per row */
-  }
 }
