@@ -108,3 +108,9 @@ header {
 .product h5 {
   margin: 10px 0; /* Add margin for spacing */
 }
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .product {
+    width: calc(100% - 20px); /* Full width for single product per row */
+  }
+}
