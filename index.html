@@ -48,12 +48,12 @@
     .container {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center; /* Center products horizontally */
+      justify-content: space-around; /* Center products horizontally */
       padding: 20px;
     }
 
     .product {
-      width: calc(50% - 20px); /* Adjusted width for 2 products per row with spacing */
+      width: calc(25% - 20px); /* Adjusted width for 4 products per row with spacing */
       margin: 10px;
       padding: 20px;
       background-color: #fff;
@@ -173,33 +173,34 @@
   </div>
 
   <!-- Chat toggle button -->
-  <div class="chat-toggle" onclick="openChat()">Instagram</div>
+  <div class="chat-toggle" onclick="open
+  Chat()">Instagram</div>
 
-  <script>
-    // Function to open the modal and display the larger image
-    function openModal(imageSrc) {
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-img');
+<script>
+  // Function to open the modal and display the larger image
+  function openModal(imageSrc) {
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
 
-      modal.style.display = 'block';
-      modalImg.src = imageSrc;
-    }
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+  }
 
-    // Function to close the modal
-    function closeModal() {
-      const modal = document.getElementById('modal');
-      modal.style.display = 'none';
-    }
+  // Function to close the modal
+  function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+  }
 
-    // Function to open the respective Category page based on
-    function openCategory(categoryId) {
-      window.location.href = 'category' + categoryId + '.html';
-    }
+  // Function to open the respective Category page based on
+  function openCategory(categoryId) {
+    window.location.href = 'category' + categoryId + '.html';
+  }
 
-    // Function to open Instagram
-    function openChat() {
-      window.open('https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9', '_blank');
-    }
-  </script>
+  // Function to open Instagram
+  function openChat() {
+    window.open('https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9', '_blank');
+  }
+</script>
 </body>
 </html>
