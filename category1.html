@@ -38,14 +38,15 @@
     }
     /* Product container */
     .container {
-        padding: 1px;
+        padding: 0; /* Adjusted padding */
+        margin: 0; /* Adjusted margin */
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
       }
 
     .product {
-      margin: 5px 5px;
+      margin: 5px; /* Adjusted margin */
       padding: 10px;
       border: 2px solid #fff;
       border-radius: 10px;
@@ -54,13 +55,14 @@
       transition: all 0.3s ease, box-shadow 0.5s ease;
       max-width: 100px;
     }
-    .product:hover {
+
+     .product:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
     }
     @media only screen and (max-width: 600px) {
       .container {
-        padding: 10px;
+        padding: 0; /* Adjusted padding */
       }
       .product {
         width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
@@ -83,8 +85,7 @@
   <!-- Modal dialog to display the larger image -->
   <div id="modal" class="modal">
     <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
-    <img id="modal
-    -img" class="modal-content">
+    <img id="modal-img" class="modal-content">
   </div>
 
   <script>
