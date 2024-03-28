@@ -38,24 +38,25 @@
     }
     /* Product container */
     .container {
-      padding: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+        padding: 1px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
     .product {
-      margin: 10px;
+      margin: 5px 5px;
       padding: 10px;
       border: 2px solid #fff;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       cursor: pointer; /* Add cursor pointer for product */
       transition: all 0.3s ease;
-      max-width: 200px;
+      max-width: 120px;
     }
     .product:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
     }
     @media only screen and (max-width: 600px) {
       .container {
@@ -91,9 +92,9 @@
       { name: 'Long Pillow', description: 'Description of Product X', image: 'images/lpillow3.jpg', id: 1 },
       { name: 'Kid Pillow', description: 'Description of Product Y', image: 'images/kpillow.jpg', id: 2 },
       { name: 'Couple Pillow', description: 'Description of Product Z', image: 'images/cpillow.jpg', id: 3 },
-      { name: 'Test', description: 'Description of Product X', image: 'images/lpillow3.jpg', id: 4 },
-      { name: 'TestPillow', description: 'Description of Product Y', image: 'images/kpillow.jpg', id: 5 },
-      { name: 'Couple Test', description: 'Description of Product Z', image: 'images/cpillow.jpg', id: 6 }
+      { name: 'Test', image: 'images/lpillow3.jpg', id: 4 },
+      { name: 'TestPillow',  image: 'images/kpillow.jpg', id: 5 },
+      { name: 'Couple Test', image: 'images/cpillow.jpg', id: 6 }
     ];
 
     // Function to create and append product elements for Category 1
@@ -105,7 +106,7 @@
         productElement.innerHTML = `
           <img src="${product.image}" alt="${product.name}">
           <h2>${product.name}</h2>
-          <p>${product.description}</p>
+          <p></p>
         `;
         productElement.onclick = function() {
           redirectToProduct(product.id);
