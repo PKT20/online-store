@@ -39,14 +39,13 @@
     /* Product container */
     .container {
         padding: 0; /* Adjusted padding */
-        margin: 0; /* Adjusted margin */
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
       }
-
+      
     .product {
-      margin: 5px; /* Adjusted margin */
+    height: 140px; /* Set a fixed height */
       padding: 10px;
       border: 2px solid #fff;
       border-radius: 10px;
@@ -56,7 +55,7 @@
       max-width: 100px;
     }
 
-     .product:hover {
+    .product:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
     }
@@ -85,7 +84,8 @@
   <!-- Modal dialog to display the larger image -->
   <div id="modal" class="modal">
     <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
-    <img id="modal-img" class="modal-content">
+    <img id="modal
+    -img" class="modal-content">
   </div>
 
   <script>
