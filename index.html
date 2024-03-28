@@ -82,15 +82,6 @@
       font-size: 18px; /* Adjust the font size as needed */
       margin-top: 10px;
     }
-     /* Additional styles for mobile responsiveness */
-     @media only screen and (max-width: 600px) {
-      .container {
-        padding: 10px;
-      }
-      .product {
-        width: calc(50% - 10px);
-      }
-    }
 
     /* CSS for chat toggle button */
     .chat-toggle {
@@ -134,6 +125,16 @@
       font-size: 48px; /* Larger font size */
       margin: 0; /* Remove default margin */
     }
+
+    /* Additional styles for smaller containers and 3 containers per row on mobile */
+    @media only screen and (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+      .product {
+        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
+      }
+    }
   </style>
   <!-- Link to Google Fonts for Pacifico font -->
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -143,29 +144,28 @@
     <h1>Gift Ur Lover</h1>
   </header>
   <div class="container" id="product-list">
-    <div class="product" onclick="openCategory(1)" onclick="openCategory(1)">
+    <div class="product" onclick="openCategory(1)">
       <img src="images/pillow.jpg" alt="Product 1">
       <div class="product-details">
-        <h2 class="product-name
-        ">Pillow</h2>
+        <h2 class="product-name">Pillow</h2>
         <button onclick="openCategory(1)">View Details</button>
       </div>
     </div>
-    <div class="product" onclick="openCategory(2)" onclick="openCategory(2)">
+    <div class="product" onclick="openCategory(2)">
       <img src="images/waterbottle.jpg" alt="Product 2">
       <div class="product-details">
         <h2 class="product-name">Water Bottle</h2>
         <button onclick="openCategory(2)">View Details</button>
       </div>
     </div>
-    <div class="product" onclick="openCategory(3)" onclick="openCategory(3)">
+    <div class="product" onclick="openCategory(3)">
       <img src="images/keychain.jpg" alt="Product 3">
       <div class="product-details">
         <h2 class="product-name">Keychain</h2>
         <button onclick="openCategory(3)">View Details</button>
       </div>
     </div>
-    <div class="product" onclick="openCategory(4)" onclick="openCategory(4)">
+    <div class="product" onclick="openCategory(4)">
       <img src="images/photoalbum.jpg" alt="Product 4">
       <div class="product-details">
         <h2 class="product-name">Photo Album</h2>
@@ -178,38 +178,38 @@
   <!-- Modal for displaying larger image -->
   <div id="modal" class="modal">
     <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
-    <img id="modal-img" class="modal-content">
+    <img id="modal
+    -img" class="modal-content">
   </div>
 
   <!-- Chat toggle button -->
-  <div class="chat-toggle" onclick="open
-  Chat()">Instagram</div>
+  <div class="chat-toggle" onclick="openChat()">Instagram</div>
 
-<script>
-  // Function to open the modal and display the larger image
-  function openModal(imageSrc) {
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
+  <script>
+    // Function to open the modal and display the larger image
+    function openModal(imageSrc) {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
 
-    modal.style.display = 'block';
-    modalImg.src = imageSrc;
-  }
+      modal.style.display = 'block';
+      modalImg.src = imageSrc;
+    }
 
-  // Function to close the modal
-  function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'none';
-  }
+    // Function to close the modal
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
 
-  // Function to open the respective Category page based on
-  function openCategory(categoryId) {
-    window.location.href = 'category' + categoryId + '.html';
-  }
+    // Function to open the respective Category page based on
+    function openCategory(categoryId) {
+      window.location.href = 'category' + categoryId + '.html';
+    }
 
-  // Function to open Instagram
-  function openChat() {
-    window.open('https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9', '_blank');
-  }
-</script>
+    // Function to open Instagram
+    function openChat() {
+      window.open('https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9', '_blank');
+    }
+  </script>
 </body>
 </html>
