@@ -5,7 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Category 1</title>
   <link rel="stylesheet" href="styles.css">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-3sxAcvZU1M71YlSfuzixPoWjlpvj9vLEblSGLufTHyILQOku03VWDoNig2r7uLwWUwfcEFrDXfuEz6tQ73jz2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
+    /* Style for the modal dialog */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      max-width: 90%;
+      max-height: 90%;
+    }
+    .container {
+      padding: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative; /* Position for the screenshot icon */
+    }
+    .product {
+      height: 200px; /* Set a fixed height */
+      margin: 5px;
+      padding: 10px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      max-width: 80px;
+      text-align: center; /* Center align text */
+      position: relative; /* For favorite button positioning */
+    }
+    
+    .product img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px; /* Adjust border radius */
+    }
+    .product h2 {
+      font-size: 18px; /* Adjust font size */
+      margin: 5px 0; /* Adjust margin */
+    }
+    .product p {
+     height: 30px; /* Set a fixed height */
+    }
+    .product p {
+      font-size: 14px; /* Adjust font size */
+      margin: 5px 0; /* Adjust margin */
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
     /* Style for the back button */
     .back-button {
       position: fixed;
@@ -20,14 +81,15 @@
       text-decoration: none;
       color: #000;
     }
+
     /* Style for the header */
     header {
-      background-image: url('images/giftbg.jpg'); /* Add your background image path here */
-      background-size: cover; /* Cover the entire header */
-      background-position: center; /* Center the background image */
-      color: #000000; /* White header text color */
-      padding: 20px 0; /* Add padding */
-      text-align: center; /* Center align text */
+      background-image: url('images/giftbg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #000000;
+      padding: 20px 0;
+      text-align: center;
     }
 
     h1 {
@@ -36,67 +98,47 @@
       color: #000;
       margin: 0;
     }
-    /* Product container */
-    .container {
-        padding: 0; /* Adjusted padding */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-    .product {
-    height: 140px; /* Set a fixed height */
-      padding: 10px;
-      border: 2px solid #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      cursor: pointer; /* Add cursor pointer for product */
-      transition: all 0.3s ease, box-shadow 0.5s ease;
-      max-width: 100px;
+
+    /* Style for the screenshot icon */
+    .screenshot-icon {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 999;
     }
 
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
-    }
-    @media only screen and (max-width: 600px) {
-      .container {
-        padding: 0; /* Adjusted padding */
-      }
-      .product {
-        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
-      }
-    }
-    
   </style>
 </head>
 <body>
   <!-- Back button -->
-  <a href="index.html" class="back-button">Back</a>
+  <a href="category1.html" class="back-button">Back</a>
 
   <header>
-    <h1>Pillow</h1>
+    <h1>Long Pillow</h1>
   </header>
   <div class="container" id="product-list">
     <!-- Product details will be dynamically inserted here -->
+    <!-- Screenshot icon -->
+    <i class="fas fa-camera screenshot-icon" onclick="takeScreenshot()"></i>
   </div>
 
   <!-- Modal dialog to display the larger image -->
-  <div id="modal" class="modal">
-    <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
-    <img id="modal
-    -img" class="modal-content">
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg">
   </div>
 
   <script>
     // Dummy product data for Category 1
     const category1Products = [
-      { name: 'Long Pillow', description: 'Description of Product X', image: 'images/lpillow3.jpg', id: 1 },
-      { name: 'Kid Pillow', description: 'Description of Product Y', image: 'images/kpillow.jpg', id: 2 },
-      { name: 'Couple Pillow', description: 'Description of Product Z', image: 'images/cpillow.jpg', id: 3 },
-      { name: 'Test', image: 'images/lpillow3.jpg', id: 4 },
-      { name: 'TestPillow',  image: 'images/kpillow.jpg', id: 5 },
-      { name: 'Couple Test', image: 'images/cpillow.jpg', id: 6 }
+      { name: 'Rabbit Pillow', description: 'Description of Product X', price: 150, image: 'images/lpillow1.jpg', id: 1 },
+      { name: 'Purple Pillow', description: 'Description of Product Y', price: 200, image: 'images/lpillow2.jpg', id: 2 },
+      { name: 'Full Body Pillow', description: 'Description of Product Z', price: 250, image: 'images/lpillow3.jpg', id: 3 },
+      { name: 'Blue Pillow', description: 'Description of Product A', price: 180, image: 'images/lpillow4.jpg', id: 4 },
+      { name: 'Striped Pillow', description: 'Description of Product B', price: 220, image: 'images/lpillow5.jpg', id: 5 },
+      { name: 'Patterned Pillow', description: 'Description of Product C', price: 200, image: 'images/lpillow6.jpg', id: 6 }
     ];
 
     // Function to create and append product elements for Category 1
@@ -108,10 +150,12 @@
         productElement.innerHTML = `
           <img src="${product.image}" alt="${product.name}">
           <h2>${product.name}</h2>
-          <p></p>
-        `;
-        productElement.onclick = function() {
-          redirectToProduct(product.id);
+          <p>${product.description}</p>
+          <p>$${product.price}</p>
+`;
+        productElement.onclick
+        = function() {
+          showModal(product.image);
         };
         productDetails.appendChild(productElement);
       });
@@ -121,8 +165,8 @@
     function showModal(imageUrl) {
       const modal = document.getElementById('myModal');
       const modalImg = document.getElementById('modalImg');
-      modal.style.display = 'block';
       modalImg.src = imageUrl;
+      modal.style.display = 'block';
     }
 
     // Close the modal when the user clicks on the close button
@@ -139,14 +183,14 @@
       }
     }
 
-    function redirectToProduct(productId) {
-      if (productId === 1) {
-        window.location.href = 'longpillow.html';
-      } else if (productId === 2) {
-        window.location.href = 'kidpillow.html'; // Link to kidpillow.html
-      } else {
-        window.location.href = `product${productId}.html`;
-      }
+    // Function to take a screenshot of the container
+    function takeScreenshot() {
+      html2canvas(document.getElementById('product-list')).then(function(canvas) {
+        var link = document.createElement('a');
+        link.download = 'screenshot.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
     }
 
     // Load the product elements when the page is loaded
