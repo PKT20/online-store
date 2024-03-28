@@ -53,7 +53,8 @@
     }
 
     .product {
-      width: calc(25% - 20px); /* Adjusted width for 4 products per row with spacing */
+      width: 200px; /* Square size */
+      height: 200px; /* Square size */
       margin: 10px;
       padding: 20px;
       background-color: #fff;
@@ -134,29 +135,28 @@
     <h1>Gift Ur Lover</h1>
   </header>
   <div class="container" id="product-list">
-    <div class="product" onclick="openCategory(1)" onclick="openCategory(1)">
+    <div class="product" onclick="openCategory(1)">
       <img src="images/pillow.jpg" alt="Product 1">
       <div class="product-details">
-        <h2 class="product-name
-        ">Pillow</h2>
+        <h2 class="product-name">Pillow</h2>
         <button onclick="openCategory(1)">View Details</button>
       </div>
     </div>
-    <div class="product" onclick="openCategory(2)" onclick="openCategory(2)">
+    <div class="product" onclick="openCategory(2)">
       <img src="images/waterbottle.jpg" alt="Product 2">
       <div class="product-details">
         <h2 class="product-name">Water Bottle</h2>
         <button onclick="openCategory(2)">View Details</button>
       </div>
     </div>
-    <div class="product" onclick="openCategory(3)" onclick="openCategory(3)">
+    <div class="product" onclick="openCategory(3)">
       <img src="images/keychain.jpg" alt="Product 3">
       <div class="product-details">
         <h2 class="product-name">Keychain</h2>
         <button onclick="openCategory(3)">View Details</button>
       </div>
     </div>
-    <div class="product" onclick="openCategory(4)" onclick="openCategory(4)">
+    <div class="product" onclick="openCategory(4)">
       <img src="images/photoalbum.jpg" alt="Product 4">
       <div class="product-details">
         <h2 class="product-name">Photo Album</h2>
@@ -173,34 +173,33 @@
   </div>
 
   <!-- Chat toggle button -->
-  <div class="chat-toggle" onclick="open
-  Chat()">Instagram</div>
+  <div class="chat-toggle" onclick="openChat()">Instagram</div>
 
-<script>
-  // Function to open the modal and display the larger image
-  function openModal(imageSrc) {
-    const modal = document.getElementById('modal');
-    const modalImg = document.getElementById('modal-img');
+  <script>
+    // Function to open the modal and display the larger image
+    function openModal(imageSrc) {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
 
-    modal.style.display = 'block';
-    modalImg.src = imageSrc;
-  }
+      modal.style.display = 'block';
+      modalImg.src = imageSrc;
+    }
 
-  // Function to close the modal
-  function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = 'none';
-  }
+    // Function to close the modal
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
 
-  // Function to open the respective Category page based on
-  function openCategory(categoryId) {
-    window.location.href = 'category' + categoryId + '.html';
-  }
+    // Function to open the respective Category page based on
+    function openCategory(categoryId) {
+      window.location.href = 'category' + categoryId + '.html';
+    }
 
-  // Function to open Instagram
-  function openChat() {
-    window.open('https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9', '_blank');
-  }
-</script>
+    // Function to open Instagram
+    function openChat() {
+      window.open('https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9', '_blank');
+    }
+  </script>
 </body>
 </html>
