@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Online Store</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
     /* CSS for modal */
     .modal {
@@ -46,30 +45,42 @@
     }
 
     /* Product container */
-    .product {
-      width: 200px; /* Adjust as needed */
-      height: 250px; /* Adjust as needed */ 
-      margin: 10px;
-      overflow: hidden;
+    .container {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center; /* Center products horizontally */
+      padding: 20px;
     }
 
-    /* Product image */
+    .product {
+      width: calc(50% - 20px); /* Adjusted width for 2 products per row with spacing */
+      margin: 10px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
     .product img {
       width: 100%;
       height: auto;
       object-fit: cover;
+      border-radius: 15px 15px 0 0; /* Rounded top corners for images */
     }
 
-    /* Product details */
     .product-details {
       padding: 10px;
+      text-align: center;
     }
 
-    /* Product name */
     .product-name {
       font-size: 18px; /* Adjust the font size as needed */
+      margin-top: 10px;
     }
 
     /* CSS for chat toggle button */
@@ -120,35 +131,36 @@
 </head>
 <body>
   <header>
-    <h1>Gift Ur Lover Test</h1>
+    <h1>Gift Ur Lover</h1>
   </header>
   <div class="container" id="product-list">
     <div class="product" ontouchstart="openCategory(1)" onclick="openCategory(1)">
       <img src="images/pillow.jpg" alt="Product 1">
       <div class="product-details">
-        <h2 class="product-name">Pillow</h2>
-        <button onclick="openCategory(1)"></button>
+        <h2 class="product-name
+        ">Pillow</h2>
+        <button onclick="openCategory(1)">View Details</button>
       </div>
     </div>
     <div class="product" ontouchstart="openCategory(2)" onclick="openCategory(2)">
       <img src="images/waterbottle.jpg" alt="Product 2">
       <div class="product-details">
-        <h3 class="product-name">Water Bottle</h3>
-        <button onclick="openCategory(2)"></button>
+        <h2 class="product-name">Water Bottle</h2>
+        <button onclick="openCategory(2)">View Details</button>
       </div>
     </div>
     <div class="product" ontouchstart="openCategory(3)" onclick="openCategory(3)">
       <img src="images/keychain.jpg" alt="Product 3">
       <div class="product-details">
-        <h4 class="product-name">Keychain</h4>
-        <button onclick="openCategory(3)"></button>
+        <h2 class="product-name">Keychain</h2>
+        <button onclick="openCategory(3)">View Details</button>
       </div>
     </div>
     <div class="product" ontouchstart="openCategory(4)" onclick="openCategory(4)">
       <img src="images/photoalbum.jpg" alt="Product 4">
       <div class="product-details">
-        <h5 class="product-name">Photo Album</h5>
-        <button onclick="openCategory(4)"></button>
+        <h2 class="product-name">Photo Album</h2>
+        <button onclick="openCategory(4)">View Details</button>
       </div>
     </div>
     <!-- Add more products as needed -->
