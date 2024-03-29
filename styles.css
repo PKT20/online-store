@@ -12,6 +12,14 @@ header {
   text-align: center;
 }
 
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 0; /* Adjusted padding */
+  }
+  .product {
+    width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
+  }
+}
 
 .product {
   width: calc(30% - 20px); /* Adjusted width for 3 products per row with spacing */
@@ -21,10 +29,6 @@ header {
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
   transition: transform 0.3s ease;
-}
-
-.product:hover {
-  transform: translateY(-5px);
 }
 
 .product img {
@@ -60,11 +64,6 @@ header {
   transition: background-color 0.3s ease;
 }
 
-
-/* Adjust the height of the product container */
-.product {
-  height: 220px; /* Set a fixed height */
-}
 
 /* Center-align the product details */
 .product-details {
