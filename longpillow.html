@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Category 1</title>
   <link rel="stylesheet" href="styles.css">
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-3sxAcvZU1M71YlSfuzixPoWjlpvj9vLEblSGLufTHyILQOku03VWDoNig2r7uLwWUwfcEFrDXfuEz6tQ73jz2w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
     /* Style for the modal dialog */
     .modal {
@@ -31,7 +29,6 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      position: relative; /* Position for the screenshot icon */
     }
     .product {
       height: 220px; /* Set a fixed height */
@@ -118,49 +115,17 @@
       margin: 0;
     }
 
-    /* Style for the favorite button */
-    .favorite-button {
-      position: absolute;
-      bottom: 5px;
-      right: 5px;
-      font-size: 25px;
-      cursor: pointer;
-    }
-
-    .favorite-button::before {
-      content: "\2764"; /* Unicode for heart symbol */
-      color: transparent; /* No color fill */
-    }
-
-    .favorite-button:hover {
-      color: #ff9999; /* Lighter red color on hover */
-    }
-
-    /* Style for the screenshot icon */
-    .screenshot-icon {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      color: #fff;
-      cursor: pointer;
-      z-index: 999;
-    }
-
   </style>
 </head>
 <body>
   <!-- Back button -->
   <a href="category1.html" class="back-button">Back</a>
-  <!-- Favorites button -->
-  <a href="favorites.html" class="Favorites-button" id="favoritesButton">Favorites</a>
-
+  
   <header>
     <h1>Long Pillow</h1>
   </header>
   <div class="container" id="product-list">
     <!-- Product details will be dynamically inserted here -->
-    <!-- Screenshot icon -->
-    <i class="fas fa-camera screenshot-icon" onclick="takeScreenshot()"></i>
   </div>
 
   <!-- Modal dialog to display the larger image -->
@@ -191,9 +156,7 @@
           <h2>${product.name}</h2>
           <p>${product.description}</p>
           <p>$${product.price}</p>
-          <span class="favorite-button" onclick="addToFavorites(${product.id}, '${product.name}', '${product.description}', 
-          ${product.price}, '${product.image}', this, true)">&#x2764;</span>
-`;
+        `;
         productElement.onclick
         = function() {
           showModal(product.image);
@@ -203,11 +166,13 @@
     }
 
     // Function to show the modal dialog with the larger image
-    function showModal(imageUrl) {
-      const modal = document.getElementById('myModal');
-      const modalImg = document.getElementById('modalImg');
-      modalImg.src = imageUrl;
-      modal.style.display = 'block';
+    function showModal(imageUrl, fromFavoriteButton = false) {
+      if (!fromFavoriteButton) {
+        const modal = document.getElementById('myModal');
+        const modalImg = document.getElementById('modalImg');
+        modalImg.src = imageUrl;
+        modal.style.display = 'block';
+      }
     }
 
     // Close the modal when the user clicks on the close button
@@ -223,36 +188,6 @@
         modal.style.display = 'none';
       }
     }
-
-    // Function to take a screenshot of the container
-    function takeScreenshot() {
-      html2canvas(document.getElementById('product-list')).then(function(canvas) {
-        var link = document.createElement('a');
-        link.download = 'screenshot.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-      });
-    }
-
-    function addToFavorites(productId, productName, productDescription, productPrice, productImage, button, fromFavoriteButton = false) {
-      // Retrieve existing favorites or initialize empty array
-      const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      // Check if the product is already in favorites
-      const exists = favorites.some(item => item.id === productId);
-      if (!exists) {
-        // Add product to favorites
-        favorites.push({ id: productId, name: productName, description: productDescription, price: productPrice, image: productImage });
-        // Store favorites in local storage
-        localStorage.setItem('favorites', JSON.stringify(favorites));
-        // Change button color to red
-        button.style.color = '#ff9999';
-      }
-      // If the click is not from the favorite button, show the modal
-      if (!fromFavoriteButton) {
-        showModal(productImage);
-      }
-    }
-
 
     // Load the product elements when the page is loaded
     window.onload = function() {
