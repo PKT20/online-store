@@ -181,6 +181,13 @@
       modal.style.display = 'none';
     }
 
+    // Close the modal when the user taps anywhere on the black screen (modal overlay)
+    document.getElementById('myModal').addEventListener('click', function(event) {
+      if (event.target === this) {
+        hideModal();
+      }
+    });
+
     // Load the product elements when the page is loaded
     window.onload = function() {
       createProductElements();
