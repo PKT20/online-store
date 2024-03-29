@@ -66,10 +66,9 @@
     }
     /* Style for the back button */
     .back-button {
-      position: fixed;
+      position: absolute;
       top: 20px;
       left: 20px;
-      z-index: 9999;
       background-color: rgba(255, 255, 255, 0.5);
       padding: 10px;
       border-radius: 5px;
@@ -130,6 +129,7 @@
 
   <!-- Modal dialog to display the larger image -->
   <div id="myModal" class="modal">
+    <a href="#" class="back-button" onclick="hideModal()">Back</a>
     <span class="close">&times;</span>
     <img class="modal-content" id="modalImg">
   </div>
@@ -145,13 +145,10 @@
       { name: 'Patterned Pillow', description: 'Description of Product C', price: 200, image: 'images/lpillow6.jpg', id: 6 }
     ];
 
-    // Keep track of the current image index
-    let currentImageIndex = 0;
-
     // Function to create and append product elements for Category 1
     function createProductElements() {
       const productDetails = document.getElementById('product-list');
-      category1Products.forEach((product, index) => {
+      category1Products.forEach(product => {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
         productElement.innerHTML = `
@@ -160,81 +157,28 @@
           <p>${product.description}</p>
           <p>$${product.price}</p>
         `;
-        productElement.onclick = function() {
-          showModal(product.image, index);
+        productElement.onclick
+        = function() {
+          showModal(product.image);
         };
         productDetails.appendChild(productElement);
       });
     }
 
     // Function to show the modal dialog with the larger image
-    function showModal(imageUrl, index, fromFavoriteButton = false) {
-      currentImageIndex = index;
-      const modal = document.getElementById('myModal');
-      const modalImg = document.getElementById('modalImg');
-      modalImg.src = imageUrl;
-      modal.style.display = 'block';
-
-      // Event listener for touchstart
-      modalImg.addEventListener('touchstart', handleTouchStart, false);
-      // Event listener for touchmove
-      modalImg.addEventListener('touchmove', handleTouchMove, false);
+    function showModal(imageUrl, fromFavoriteButton = false) {
+      if (!fromFavoriteButton) {
+        const modal = document.getElementById('myModal');
+        const modalImg = document.getElementById('modalImg');
+        modalImg.src = imageUrl;
+        modal.style.display = 'block';
+      }
     }
 
-    // Close the modal when the user clicks on the close button
-    document.getElementsByClassName('close')[0].onclick = function() {
+    // Function to hide the modal dialog
+    function hideModal() {
       const modal = document.getElementById('myModal');
       modal.style.display = 'none';
-    }
-
-    // Close the modal when the user clicks on the modal overlay
-    window.onclick = function(event) {
-      const modal = document.getElementById('myModal');
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
-    }
-
-    // Handle touch start event
-    let xDown = null;
-    let yDown = null;
-
-    function handleTouchStart(event) {
-      xDown = event.touches[0].clientX;
-      yDown = event.touches[0].clientY;
-    }
-
-    // Handle touch move event
-    function handleTouchMove(event) {
-      if (!xDown || !yDown) {
-        return;
-      }
-
-      let xUp = event.touches[0].clientX;
-      let yUp = event.touches[0].clientY;
-
-      let xDiff = xDown - xUp;
-      let yDiff = yDown - yUp;
-
-      if (Math.abs(xDiff) > Math.abs(yDiff)) { /* most significant */
-        if (xDiff > 0) {
-          /* left swipe */
-          showPreviousImage();
-        } else {
-          /* right swipe */
-          // You can handle right swipe if needed
-        }
-      }
-      /* reset values */
-      xDown = null;
-      yDown = null;
-    }
-
-    // Function to show the previous image
-    function showPreviousImage() {
-      currentImageIndex = (currentImageIndex - 1 + category1Products.length) % category1Products.length;
-      const modalImg = document.getElementById('modalImg');
-      modalImg.src = category1Products[currentImageIndex].image;
     }
 
     // Load the product elements when the page is loaded
