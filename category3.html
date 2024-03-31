@@ -126,6 +126,24 @@
         width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
       }
     }
+    /* Additional styles for arrows */
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: white;
+      z-index: 1010; /* Ensure arrows are above the image */
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
 
     
   </style>
@@ -144,7 +162,9 @@
   <!-- Modal dialog to display the larger image -->
   <div id="modal" class="modal">
     <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
+    <span class="arrow left" onclick="showPrevImage()">&#10094;</span> <!-- Left arrow -->
     <img id="modal-img" class="modal-content">
+    <span class="arrow right" onclick="showNextImage()">&#10095;</span> <!-- Right arrow -->
   </div>
 
   <script>
@@ -153,7 +173,7 @@
 
     // Generate an array of products with images dk1.png to dk42.png
     const category1Products = Array.from({ length: 42 }, (v, i) => ({
-      image: `images/dk${i + 1}.PNG`,
+      image: `images/dk${i + 1}.png`,
       id: i + 1
     }));
 
@@ -199,6 +219,20 @@
 
     function showPrevImage() {
       currentIndex = (currentIndex - 1 + category1Products.length) % category1Products.length; // Loop back to the last image if at the beginning
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = category1Products[currentIndex].image;
+    }
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % category1Products.length;
+      updateModalImage();
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex + 1 + category1Products.length) % category1Products.length;
       updateModalImage();
     }
 
