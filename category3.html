@@ -175,6 +175,9 @@
 </head>
 <body>
 
+   <!-- Back button -->
+ <a href="index.html" class="back-button">Back</a>
+ 
   <header>
     <h1>Doll Keychain</h1>
   </header>
@@ -184,12 +187,7 @@
   <div class="container" id="product-list">
     <!-- Product details will be dynamically inserted here -->
   </div>
-
- <!-- Back button -->
- <a href="index.html" class="back-button">Back</a>
   
-
-
   <!-- Modal dialog to display the larger image -->
   <div id="modal" class="modal">
     <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
@@ -230,19 +228,24 @@
   }
 }
 
-    function showModal(index) {
-      currentIndex = index; // Update the current index
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-img');
-      modal.style.display = "block";
-      modalImg.src = category1Products[index].image;
-      modalImg.alt = "Enlarged Image";
-    }
-
-    function closeModal() {
+function showModal(index) {
+  currentIndex = index; // Update the current index
   const modal = document.getElementById('modal');
-  modal.style.display = "none";
+  const modalImg = document.getElementById('modal-img');
+  const backButton = document.querySelector('.back-button'); // Get the back button
+  modal.style.display = "block";
+  modalImg.src = category1Products[index].image;
+  modalImg.alt = "Enlarged Image";
+  backButton.style.visibility = 'hidden'; // Hide the back button
 }
+
+function closeModal() {
+  const modal = document.getElementById('modal');
+  const backButton = document.querySelector('.back-button'); // Get the back button
+  modal.style.display = "none";
+  backButton.style.visibility = 'visible'; // Show the back button again
+}
+
 
     let touchstartX = 0;
     let touchendX = 0;
