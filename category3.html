@@ -152,21 +152,43 @@
     .arrow.right {
       right: 10px;
     }
+    .top-message {
+  text-align: center; /* Center the text */
+  padding: 10px 0; /* Add some padding above and below the text */
+  font-size: 18px; /* Set the font size */
+  background-color: #f0f0f0; /* Light background color for the message */
+  color: #333; /* Dark text color for contrast */
+  margin-bottom: 20px; /* Add some space between the message and the rest of the content */
+}
+
+.top-message a {
+  color: #007bff; /* Color for the Instagram link. Adjust as needed */
+  text-decoration: none; /* No underline for the link */
+}
+
+.top-message a:hover {
+  text-decoration: underline; /* Underline on hover for the link */
+}
 
     
   </style>
 </head>
 <body>
-  <!-- Back button -->
-  <a href="index.html" class="back-button">Back</a>
-  <!-- Back button with modified onclick event -->
 
   <header>
     <h1>Doll Keychain</h1>
   </header>
+  <div class="top-message">
+    Please choose your favorite design here and message us on <a href="https://www.instagram.com/yourusername" target="_blank">Instagram</a>.
+  </div>
   <div class="container" id="product-list">
     <!-- Product details will be dynamically inserted here -->
   </div>
+
+ <!-- Back button -->
+ <a href="index.html" class="back-button">Back</a>
+  
+
 
   <!-- Modal dialog to display the larger image -->
   <div id="modal" class="modal">
@@ -208,24 +230,19 @@
   }
 }
 
-function showModal(index) {
-  currentIndex = index; // Update the current index
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modal-img');
-  const backButton = document.querySelector('.back-button'); // Get the back button
-  modal.style.display = "block";
-  modalImg.src = category1Products[index].image;
-  modalImg.alt = "Enlarged Image";
-  backButton.style.visibility = 'hidden'; // Hide the back button
-}
+    function showModal(index) {
+      currentIndex = index; // Update the current index
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      modal.style.display = "block";
+      modalImg.src = category1Products[index].image;
+      modalImg.alt = "Enlarged Image";
+    }
 
-function closeModal() {
+    function closeModal() {
   const modal = document.getElementById('modal');
-  const backButton = document.querySelector('.back-button'); // Get the back button
   modal.style.display = "none";
-  backButton.style.visibility = 'visible'; // Show the back button
 }
-
 
     let touchstartX = 0;
     let touchendX = 0;
