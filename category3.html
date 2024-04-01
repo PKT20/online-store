@@ -104,8 +104,8 @@
 
     /* Style for the image container */
     .product {
-    height: 100px; /* Set a fixed height */
-      padding: 1px;
+    height: 99px; /* Set a fixed height */
+      padding: 0px;
       border: 2px solid #fff;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -113,6 +113,14 @@
       transition: all 0.3s ease, box-shadow 0.5s ease;
       max-width: 100px;
     }
+    .product img {
+  width: 100%; /* Ensures the image width is the same as the container's */
+  height: 100%; /* Ensures the image height is the same as the container's */
+  object-fit: contain; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
+  border-radius: 8px; /* Optional: Matches the container's border-radius */
+  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
+}
+
 
     .product:hover {
       transform: translateY(-5px);
@@ -150,10 +158,12 @@
 </head>
 <body>
   <!-- Back button -->
-  <a href="index.html" class="back-button">Back</a>
+  <!-- Back button with modified onclick event -->
+<a href="javascript:void(0);" class="back-button" onclick="handleBackButtonClick()">Back</a>
+
 
   <header>
-    <h1>Pillow</h1>
+    <h1>Doll Keychain</h1>
   </header>
   <div class="container" id="product-list">
     <!-- Product details will be dynamically inserted here -->
@@ -169,10 +179,8 @@
 
   <script>
    
-  
-
     // Generate an array of products with images dk1.png to dk42.png
-    const category1Products = Array.from({ length: 42 }, (v, i) => ({
+    const category1Products = Array.from({ length: 62 }, (v, i) => ({
       image: `images/dk${i + 1}.PNG`,
       id: i + 1
     }));
@@ -189,6 +197,17 @@
         productDetails.appendChild(productElement);
       });
     }
+    function handleBackButtonClick() {
+  const modal = document.getElementById('modal');
+  // Check if the modal is currently displayed
+  if (modal.style.display === "block") {
+    // Close the modal if it's open
+    closeModal();
+  } else {
+    // Navigate back to the category page if the modal is not open
+    window.location.href = 'category-page.html'; // Change 'category-page.html' to your actual category page URL
+  }
+}
 
     function showModal(index) {
       currentIndex = index; // Update the current index
@@ -200,9 +219,9 @@
     }
 
     function closeModal() {
-      const modal = document.getElementById('modal');
-      modal.style.display = "none";
-    }
+  const modal = document.getElementById('modal');
+  modal.style.display = "none";
+}
 
     let touchstartX = 0;
     let touchendX = 0;
@@ -253,13 +272,17 @@
       touchendX = e.changedTouches[0].screenX;
       checkSwipe();
     });
+    
 
     // Updated event listener for closing the modal
     modal.addEventListener('click', function(event) {
       // Check if the click (or touch) event is on the modal itself and not on its children (like the image)
       if (event.target === modal) {
         closeModal();
+        
       }
+      
+      
     });
 
     // You might also want to update this event listener to prevent it from closing the modal when the image is clicked
