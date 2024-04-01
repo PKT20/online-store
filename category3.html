@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Category 1</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Doll Keychain</title>
+  
   <style>
     /* Style for the back button */
     .back-button {
@@ -14,7 +14,7 @@
       z-index: 9999;
       background-color: rgba(252, 185, 243, 0.5);
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 1px;
       cursor: pointer;
       font-family: 'Arial', sans-serif;
       text-decoration: none;
@@ -36,6 +36,12 @@
       color: #000;
       margin: 0;
     }
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8; /* Light gray background */
+}
     /* Product container */
     .container {
         padding: 0; /* Adjusted padding */
@@ -101,11 +107,12 @@
     font-weight: bold;
     cursor: pointer;
     }
-
-    /* Style for the image container */
-    .product {
+ 
+ /* Style for the image container */
+ .product {
+  width: calc(30% - 20px);
     height: 99px; /* Set a fixed height */
-      padding: 0px;
+      padding: 5px;
       border: 2px solid #f8c1ea;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -113,6 +120,7 @@
       transition: all 0.3s ease, box-shadow 0.5s ease;
       max-width: 100px;
     }
+   
     .product img {
   width: 100%; /* Ensures the image width is the same as the container's */
   height: 100%; /* Ensures the image height is the same as the container's */
