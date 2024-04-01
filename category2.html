@@ -3,57 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Category 1</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Doll Keychain</title>
+  
   <style>
-    /* waterbottle */
-    /* Style for the modal dialog */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.9);
-    }
-    .modal-content {
-      margin: auto;
-      display: block;
-      max-width: 90%;
-      max-height: 90%;
-    }
-    .container {
-      padding: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .product {
-      margin: 10px;
-      padding: 10px;
-      border: 2px solid #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      cursor: pointer; /* Add cursor pointer for product */
-      transition: all 0.3s ease;
-      max-width: 200px;
-    }
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    }
     /* Style for the back button */
     .back-button {
       position: fixed;
       top: 20px;
       left: 20px;
       z-index: 9999;
-      background-color: rgba(255, 255, 255, 0.5);
+      background-color: rgba(252, 185, 243, 0.5);
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 1px;
       cursor: pointer;
       font-family: 'Arial', sans-serif;
       text-decoration: none;
@@ -75,89 +36,290 @@
       color: #000;
       margin: 0;
     }
-    
-  </style>
-</head>
-<body>
-  <!-- Back button -->
-  <a href="index.html" class="back-button">Back</a>
-
-  <header>
-    <h1>Water Bottle</h1>
-  </header>
-  <div class="container" id="product-list">
-    <!-- Product details will be dynamically inserted here -->
-  </div>
-
-  <!-- Modal dialog to display the larger image -->
-  <div id="myModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImg">
-  </div>
-
-  <script>
-    // Dummy product data for Category 1
-    const category1Products = [
-      { name: 'Long Pillow', description: 'Description of Product X', image: 'images/lpillow3.jpg', id: 1 },
-      { name: 'Kid Pillow', description: 'Description of Product Y', image: 'images/kpillow.jpg', id: 2 },
-      { name: 'Couple Pillow', description: 'Description of Product Z', image: 'images/cpillow.jpg', id: 3 }
-    ];
-
-    // Function to create and append product elements for Category 1
-    function createProductElements() {
-      const productDetails = document.getElementById('product-list');
-      category1Products.forEach(product => {
-        const productElement = document.createElement('div');
-        productElement.classList.add('product');
-        productElement.innerHTML = `
-          <img src="${product.image}" alt="${product.name}">
-          <h2>${product.name}</h2>
-          <p>${product.description}</p>
-        `;
-        productElement.onclick = function() {
-          redirectToProduct(product.id);
-        };
-        productDetails.appendChild(productElement);
-      });
-    }
-
-    // Function to show the modal dialog with the larger image
-    function showModal(imageUrl) {
-      const modal = document.getElementById('myModal');
-      const modalImg = document.getElementById('modalImg');
-      modal.style.display = 'block';
-      modalImg.src = imageUrl;
-    }
-
-    // Close the modal when the user clicks on the close button
-    document.getElementsByClassName('close')[0].onclick = function() {
-      const modal = document.getElementById('myModal');
-      modal.style.display = 'none';
-    }
-
-    // Close the modal when the user clicks on the modal overlay
-    window.onclick = function(event) {
-      const modal = document.getElementById('myModal');
-      if (event.target === modal) {
-        modal.style.display = 'none';
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8; /* Light gray background */
+}
+    /* Product container */
+    .container {
+        padding: 0; /* Adjusted padding */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
       }
+      /* Additional styles for the modal */
+    #modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Full-screen */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
     }
 
-    function redirectToProduct(productId) {
-  if (productId === 1) {
-    window.location.href = 'longpillow.html';
-  } else if (productId === 2) {
-    window.location.href = 'kidpillow.html'; // Link to kidpillow.html
-  } else {
-    window.location.href = `product${productId}.html`;
-  }
+    #modal-img {
+      margin: auto;
+      display: block; /* Block display to allow use of margin auto */
+      width: 80%; /* Width of the image */
+      max-width: 700px; /* Maximum width */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Add animation */
+    @keyframes zoom {
+      from {transform: scale(0)} 
+      to {transform: scale(1)}
+    }
+    /* Close button */
+        .close {
+    position: absolute;
+    top: 0%;
+     right: 0px;
+     color: #fdc8e9;
+    font-size: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    }
+ 
+ /* Style for the image container */
+ .product {
+  width: calc(30% - 20px);
+    height: 99px; /* Set a fixed height */
+      padding: 5px;
+      border: 2px solid #f8c1ea;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer; /* Add cursor pointer for product */
+      transition: all 0.3s ease, box-shadow 0.5s ease;
+      max-width: 100px;
+    }
+   
+    .product img {
+  width: 100%; /* Ensures the image width is the same as the container's */
+  height: 100%; /* Ensures the image height is the same as the container's */
+  object-fit: contain; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
+  border-radius: 8px; /* Optional: Matches the container's border-radius */
+  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
 }
 
 
-    // Load the product elements when the page is loaded
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
+    }
+    @media only screen and (max-width: 600px) {
+      .container {
+        padding: 0; /* Adjusted padding */
+      }
+      .product {
+        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
+      }
+    }
+    /* Additional styles for arrows */
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: white;
+      z-index: 1010; /* Ensure arrows are above the image */
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+    .top-message {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 15px;
+  background-color: #ffffff;
+  color: #333;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.top-message a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.top-message a:hover {
+  text-decoration: underline;
+}
+
+
+  </style>
+</head>
+<body>
+
+   <!-- Back button -->
+ <a href="index.html" class="back-button">Back</a>
+
+  <header>
+    <h1>Doll Keychain</h1>
+  </header>
+  <div class="top-message">
+    Please choose your favorite design here and kindly direct message to us on <a href="https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9" target="_blank">Instagram</a>.
+  </div>
+  <div class="container" id="product-list">
+    <!-- Product details will be dynamically inserted here -->
+  </div>
+  
+  <!-- Modal dialog to display the larger image -->
+  <div id="modal" class="modal">
+    <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
+    <span class="arrow left" onclick="showPrevImage()">&#10094;</span> <!-- Left arrow -->
+    <img id="modal-img" class="modal-content">
+    <span class="arrow right" onclick="showNextImage()">&#10095;</span> <!-- Right arrow -->
+  </div>
+
+  <script>
+   
+    // Generate an array of products with images dk1.png to dk42.png
+    const category1Products = Array.from({ length: 62 }, (v, i) => ({
+      image: `images/dk${i + 1}.PNG`,
+      id: i + 1
+    }));
+
+    function createProductElements() {
+      const productDetails = document.getElementById('product-list');
+      category1Products.forEach((product, index) => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+        productElement.innerHTML = `<img src="${product.image}" alt="Product Image ${product.id}" style="width:100%;height:auto;">`;
+        productElement.addEventListener('click', () => {
+          showModal(index); // Pass the index of the clicked image
+        });
+        productDetails.appendChild(productElement);
+      });
+    }
+    function handleBackButtonClick() {
+  const modal = document.getElementById('modal');
+  // Check if the modal is currently displayed
+  if (modal.style.display === "block") {
+    // Close the modal if it's open
+    closeModal();
+  } else {
+    // Navigate back to the category page if the modal is not open
+    window.location.href = 'category3.html'; // Change 'category-page.html' to your actual category page URL
+  }
+}
+
+function showModal(index) {
+  currentIndex = index; // Update the current index
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  const backButton = document.querySelector('.back-button'); // Get the back button
+  modal.style.display = "block";
+  modalImg.src = category1Products[index].image;
+  modalImg.alt = "Enlarged Image";
+  backButton.style.visibility = 'hidden'; // Hide the back button
+}
+
+function closeModal() {
+  const modal = document.getElementById('modal');
+  const backButton = document.querySelector('.back-button'); // Get the back button
+  modal.style.display = "none";
+  backButton.style.visibility = 'visible'; // Show the back button again
+}
+
+
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    function checkSwipe() {
+      if (touchendX < touchstartX) showNextImage();
+      if (touchendX > touchstartX) showPrevImage();
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % category1Products.length; // Loop back to the first image if at the end
+      updateModalImage();
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex - 1 + category1Products.length) % category1Products.length; // Loop back to the last image if at the beginning
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = category1Products[currentIndex].image;
+    }
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % category1Products.length;
+      updateModalImage();
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex + 1 + category1Products.length) % category1Products.length;
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = category1Products[currentIndex].image;
+    }
+
     window.onload = function() {
-      createProductElements();
-    };
-  </script>
+    createProductElements();
+    const modal = document.getElementById('modal');
+
+    modal.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX;
+    });
+
+    modal.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX;
+      checkSwipe();
+    });
+
+    // Updated event listener for closing the modal
+    modal.addEventListener('click', function(event) {
+      // Check if the click (or touch) event is on the modal itself and not on its children (like the image)
+      if (event.target === modal) {
+        closeModal();
+        
+      }
+    });
+
+    // You might also want to update this event listener to prevent it from closing the modal when the image is clicked
+    document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
+  };
+</script>
 </body>
 </html>
