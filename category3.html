@@ -158,9 +158,8 @@
 </head>
 <body>
   <!-- Back button -->
+  <a href="index.html" class="back-button">Back</a>
   <!-- Back button with modified onclick event -->
-<a href="javascript:void(0);" class="back-button" onclick="handleBackButtonClick()">Back</a>
-
 
   <header>
     <h1>Doll Keychain</h1>
@@ -205,23 +204,28 @@
     closeModal();
   } else {
     // Navigate back to the category page if the modal is not open
-    window.location.href = 'category-page.html'; // Change 'category-page.html' to your actual category page URL
+    window.location.href = 'category3.html'; // Change 'category-page.html' to your actual category page URL
   }
 }
 
-    function showModal(index) {
-      currentIndex = index; // Update the current index
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-img');
-      modal.style.display = "block";
-      modalImg.src = category1Products[index].image;
-      modalImg.alt = "Enlarged Image";
-    }
-
-    function closeModal() {
+function showModal(index) {
+  currentIndex = index; // Update the current index
   const modal = document.getElementById('modal');
-  modal.style.display = "none";
+  const modalImg = document.getElementById('modal-img');
+  const backButton = document.querySelector('.back-button'); // Get the back button
+  modal.style.display = "block";
+  modalImg.src = category1Products[index].image;
+  modalImg.alt = "Enlarged Image";
+  backButton.style.visibility = 'hidden'; // Hide the back button
 }
+
+function closeModal() {
+  const modal = document.getElementById('modal');
+  const backButton = document.querySelector('.back-button'); // Get the back button
+  modal.style.display = "none";
+  backButton.style.visibility = 'visible'; // Show the back button
+}
+
 
     let touchstartX = 0;
     let touchendX = 0;
@@ -272,7 +276,6 @@
       touchendX = e.changedTouches[0].screenX;
       checkSwipe();
     });
-    
 
     // Updated event listener for closing the modal
     modal.addEventListener('click', function(event) {
@@ -281,8 +284,6 @@
         closeModal();
         
       }
-      
-      
     });
 
     // You might also want to update this event listener to prevent it from closing the modal when the image is clicked
