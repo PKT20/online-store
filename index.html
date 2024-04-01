@@ -111,7 +111,7 @@
       box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8); /* Increase shadow on hover */
     }
 
-    /* Stylish header */
+    /* Style for the header */
     header {
       background-image: url('images/giftbg.jpg'); /* Add your background image path here */
       background-size: cover; /* Cover the entire header */
@@ -121,12 +121,44 @@
       text-align: center; /* Center align text */
     }
 
-    header h1 {
-      font-family: 'Pacifico', cursive; /* Fancy font */
-      font-size: 48px; /* Larger font size */
-      margin: 0; /* Remove default margin */
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 50px;
+      color: #000;
+      margin: 0;
     }
-
+    .how-it-works-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4; /* Adjust background color as needed */
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+  }
+  .step-circle {
+    background-color: #e9b5e0; /* Adjust circle color as needed */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+  }
+  .step-description {
+    text-align: center;
+    color: #333; /* Adjust text color as needed */
+  }
+   .step:last-child::after {
+    content: none;
+  }
+    
     /* Additional styles for smaller containers and 3 containers per row on mobile */
     @media only screen and (max-width: 600px) {
       .container {
@@ -146,6 +178,20 @@
   <header>
     <h1>Gift Ur Lover</h1>
   </header>
+  <div class="how-it-works-container">
+    <div class="step">
+      <div class="step-circle">Step 1</div>
+      <div class="step-description">Choose your favorite design</div>
+    </div>
+    <div class="step">
+      <div class="step-circle">Step 2</div>
+      <div class="step-description">Screenshot</div>
+    </div>
+    <div class="step">
+      <div class="step-circle">Step 3</div>
+      <div class="step-description">Direct message us on instagram</div>
+    </div>
+      </div>
   <div class="container" id="product-list">
     <div class="product" onclick="openCategory(1)">
       <img src="images/pillow.jpg" alt="Product 1">
@@ -176,13 +222,6 @@
       </div>
     </div>
     <!-- Add more products as needed -->
-  </div>
-
-  <!-- Modal for displaying larger image -->
-  <div id="modal" class="modal">
-    <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
-    <img id="modal
-    -img" class="modal-content">
   </div>
 
   <!-- Chat toggle button -->
