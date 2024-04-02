@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
   <title>Online Store</title>
   <style>
     /* CSS for modal */
@@ -127,38 +129,53 @@
       color: #000;
       margin: 0;
     }
-    .how-it-works-container {
+    .step-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #f4f4f4; /* Adjust background color as needed */
-  }
-  .step {
+    justify-content: space-between;
+    background: linear-gradient(135deg, #FADADD, #FAD4E4);
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+.step {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 0 10px;
-  }
-  .step-circle {
-    background-color: #e9b5e0; /* Adjust circle color as needed */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(0, 0, 0);
-    margin-bottom: 10px;
-  }
-  .step-description {
-    text-align: center;
-    color: #333; /* Adjust text color as needed */
-  }
-   .step:last-child::after {
-    content: none;
-  }
-    
+    position: relative;
+    padding: 5px 10px; /* Reduced padding for a more compact look */
+}
+
+.step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -40px; /* Adjust based on your layout */
+    width: 60px; /* Width of the line */
+    height: 2px;
+        z-index: 0;
+}
+
+
+
+
+.icon {
+    font-size: 30px; /* Reduced icon size for compactness */
+    color: #D63384;
+    z-index: 1;
+}
+
+.step-text {
+    margin-left: 15px;
+    text-align: left;
+}
+
+.step-title {
+    font-size: 16px; /* Smaller title for compactness */
+    color: #D63384;
+    font-weight: bold;
+}
+
+
     /* Additional styles for smaller containers and 3 containers per row on mobile */
     @media only screen and (max-width: 600px) {
       .container {
@@ -178,20 +195,28 @@
   <header>
     <h1>Gift Ur Lover</h1>
   </header>
-  <div class="how-it-works-container">
+  <div class="step-container">
     <div class="step">
-      <div class="step-circle">Step 1</div>
-      <div class="step-description">Choose your favorite design</div>
+        <i class="fas fa-heart icon"></i>
+        <div class="step-text">
+            <div class="step-title">Choose Design</div>
+        </div>
     </div>
     <div class="step">
-      <div class="step-circle">Step 2</div>
-      <div class="step-description">Screenshot</div>
+        <i class="fas fa-camera icon"></i>
+        <div class="step-text">
+            <div class="step-title">Take Screenshot</div>
+        </div>
     </div>
     <div class="step">
-      <div class="step-circle">Step 3</div>
-      <div class="step-description">Direct message us on instagram</div>
+      <i class="fab fa-instagram icon"></i>
+        <div class="step-text">
+            <div class="step-title">Message us on Instagram</div>
+        </div>
     </div>
-      </div>
+</div>
+
+
   <div class="container" id="product-list">
     <div class="product" onclick="openCategory(1)">
       <img src="images/pillow.jpg" alt="Product 1">
