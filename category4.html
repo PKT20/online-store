@@ -42,7 +42,7 @@
     }
 
     .container {
-      padding: 0;
+      padding: 10;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -63,7 +63,7 @@
     #modal-img {
       margin: auto;
       display: block;
-      width: 80%;
+      width: 100%;
       max-width: 700px;
       top: 50%;
       left: 50%;
@@ -179,7 +179,37 @@
       <img src="images/pa/pa1.JPG" alt="Initial Product 1">
     </div>
     <div class="product" id="product2">
-      <img src="images/pa/pa7.JPG" alt="Initial Product 2">
+      <img src="images/pa/pa8.JPG" alt="Initial Product 2">
+    </div>
+    <div class="product" id="product3">
+      <img src="images/pa/pa12.JPG" alt="Initial Product 3">
+    </div>
+    <div class="product" id="product4">
+      <img src="images/pa/pa19.JPG" alt="Initial Product 4">
+    </div>
+    <div class="product" id="product5">
+      <img src="images/pa/pa42.PNG" alt="Initial Product 5">
+    </div>
+    <div class="product" id="product6">
+      <img src="images/pa/pa26.JPG" alt="Initial Product 6">
+    </div>
+    <div class="product" id="product7">
+      <img src="images/pa/pa31.JPG" alt="Initial Product 7">
+    </div>
+    <div class="product" id="product8">
+      <img src="images/pa/pa36.JPG" alt="Initial Product 8">
+    </div>
+    <div class="product" id="product9">
+      <img src="images/pa/pa34.JPG" alt="Initial Product 9">
+    </div>
+    <div class="product" id="product10">
+      <img src="images/pa/pa41.JPG" alt="Initial Product 10">
+    </div>
+    <div class="product" id="product11">
+      <img src="images/pa/pa17.JPG" alt="Initial Product 11">
+    </div>
+    <div class="product" id="product12">
+      <img src="images/pa/pa5.JPG" alt="Initial Product 12">
     </div>
   </div>
 
@@ -196,23 +226,106 @@
   let currentImages = []; // Holds the images for the current product
 
   function loadMoreImages(containerId) {
-    const moreImagesProduct1 = [
-      'images/pa/pa1.JPG', 
-      'images/pa/pa2.JPG', 
-      'images/pa/pa3.JPG',
-      'images/pa/pa4.JPG'
-    ];
+  let moreImagesProduct1 = [
+    'images/pa/pa1.JPG', 
+    'images/pa/pa2.JPG', 
+    'images/pa/pa3.JPG',
+    'images/pa/pa4.JPG'
+  ];
 
-    const moreImagesProduct2 = [
-      'images/pa/pa7.JPG', 
-      'images/pa/pa8.JPG', 
-      'images/pa/pa9.JPG',
-      'images/pa/pa10.JPG'
-    ];
+  let moreImagesProduct2 = [
+    'images/pa/pa8.JPG', 
+    'images/pa/pa7.JPG', 
+    'images/pa/pa9.JPG',
+    'images/pa/pa10.JPG'
+  ];
 
-    // Choose the correct image set based on the container ID
-    currentImages = containerId === 1 ? moreImagesProduct1 : moreImagesProduct2;
-    currentIndex = 0; // Start with the first image of the set
+  let moreImagesProduct3 = [
+    'images/pa/pa12.JPG', 
+    'images/pa/pa13.JPG', 
+    'images/pa/pa14.JPG',
+    'images/pa/pa15.JPG',
+    'images/pa/pa16.JPG'
+  ];
+  let moreImagesProduct4 = [
+    'images/pa/pa19.JPG', 
+    'images/pa/pa20.JPG', 
+    'images/pa/pa21.JPG',
+    'images/pa/pa22.JPG'
+  ];
+  let moreImagesProduct5 = [
+    'images/pa/pa42.PNG',
+    'images/pa/pa23.JPG', 
+    'images/pa/pa24.JPG', 
+    'images/pa/pa25.JPG'
+  ];
+  let moreImagesProduct6 = [
+    'images/pa/pa26.JPG', 
+    'images/pa/pa27.JPG', 
+    'images/pa/pa28.JPG', 
+    'images/pa/pa29.JPG',
+    'images/pa/pa30.JPG'
+  ];
+  let moreImagesProduct7 = [
+    'images/pa/pa31.JPG', 
+    'images/pa/pa32.JPG', 
+    'images/pa/pa33.JPG'
+     ];
+
+  let moreImagesProduct8 = [
+    'images/pa/pa36.JPG', 
+    'images/pa/pa35.JPG', 
+    'images/pa/pa37.JPG',
+    'images/pa/pa38.JPG'
+  ];
+
+  let moreImagesProduct9 = [
+    'images/pa/pa34.JPG', 
+    'images/pa/pa43.JPG', 
+    'images/pa/pa44.PNG',
+    'images/pa/pa45.PNG',
+    'images/pa/pa46.PNG'
+  ];
+  let moreImagesProduct10 = [
+    'images/pa/pa41.JPG', 
+    'images/pa/pa39.JPG', 
+    'images/pa/pa40.JPG'
+  ];
+  let moreImagesProduct11 = [
+  'images/pa/pa17.JPG', 
+  'images/pa/pa18.JPG'
+  ];
+  let moreImagesProduct12 = [
+  'images/pa/pa5.JPG', 
+  'images/pa/pa6.JPG'
+  ];
+
+  // Determine which set of images to use
+  if (containerId === 1) {
+    currentImages = moreImagesProduct1;
+  } else if (containerId === 2) {
+    currentImages = moreImagesProduct2;
+  } else if (containerId === 3) {
+    currentImages = moreImagesProduct3;
+  } else if (containerId === 4) {
+    currentImages = moreImagesProduct4;
+  } else if (containerId === 5) {
+    currentImages = moreImagesProduct5;
+  } else if (containerId === 6) {
+    currentImages = moreImagesProduct6;
+  } else if (containerId === 7) {
+    currentImages = moreImagesProduct7;
+  } else if (containerId === 8) {
+    currentImages = moreImagesProduct8;
+  } else if (containerId === 9) {
+    currentImages = moreImagesProduct9;
+  } else if (containerId === 10) {
+    currentImages = moreImagesProduct10;
+  } else if (containerId === 11) {
+    currentImages = moreImagesProduct11;
+  } else if (containerId === 12) {
+    currentImages = moreImagesProduct12;
+  }
 
     // Display the first image of the set in the modal
     const modalImg = document.getElementById('modal-img');
@@ -246,7 +359,16 @@
   // Event listeners
   document.getElementById('product1').addEventListener('click', () => loadMoreImages(1));
   document.getElementById('product2').addEventListener('click', () => loadMoreImages(2));
-
+  document.getElementById('product3').addEventListener('click', () => loadMoreImages(3));
+  document.getElementById('product4').addEventListener('click', () => loadMoreImages(4));
+  document.getElementById('product5').addEventListener('click', () => loadMoreImages(5));
+  document.getElementById('product6').addEventListener('click', () => loadMoreImages(6));
+  document.getElementById('product7').addEventListener('click', () => loadMoreImages(7));
+  document.getElementById('product8').addEventListener('click', () => loadMoreImages(8));
+  document.getElementById('product9').addEventListener('click', () => loadMoreImages(9));
+  document.getElementById('product10').addEventListener('click', () => loadMoreImages(10));
+  document.getElementById('product11').addEventListener('click', () => loadMoreImages(11));
+  document.getElementById('product12').addEventListener('click', () => loadMoreImages(12));
   // Close modal when clicking outside the modal image
   window.onclick = function(event) {
     if (event.target == document.getElementById('modal')) {
