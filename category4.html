@@ -192,49 +192,67 @@
 
 
   <script>
-    function loadMoreImages(containerId) {
-      const moreImagesProduct1 = [
-        'images/pa/pa1.JPG', 
-        'images/pa/pa2.JPG', 
-        'images/pa/pa3.JPG',
-        'images/pa/pa4.JPG'
-      ];
+    let currentIndex = 0; // Global index to track the current image
+  let currentImages = []; // Holds the images for the current product
 
-      const moreImagesProduct2 = [
-        'images/pa/pa7.JPG', 
-        'images/pa/pa8.JPG', 
-        'images/pa/pa9.JPG',
-        'images/pa/pa10.JPG'
-      ];
+  function loadMoreImages(containerId) {
+    const moreImagesProduct1 = [
+      'images/pa/pa1.JPG', 
+      'images/pa/pa2.JPG', 
+      'images/pa/pa3.JPG',
+      'images/pa/pa4.JPG'
+    ];
 
-      const moreImages = containerId === 1 ? moreImagesProduct1 : moreImagesProduct2;
-      const modal = document.getElementById('modal');
-      const modalImg = document.getElementById('modal-img');
-      let currentIndex = 0;
+    const moreImagesProduct2 = [
+      'images/pa/pa7.JPG', 
+      'images/pa/pa8.JPG', 
+      'images/pa/pa9.JPG',
+      'images/pa/pa10.JPG'
+    ];
 
-      modalImg.src = moreImages[currentIndex];
-      modal.style.display = "block";
+    // Choose the correct image set based on the container ID
+    currentImages = containerId === 1 ? moreImagesProduct1 : moreImagesProduct2;
+    currentIndex = 0; // Start with the first image of the set
 
-      modalImg.onclick = () => {
-        currentIndex = (currentIndex + 1) % moreImages.length;
-        modalImg.src = moreImages[currentIndex];
-      };
+    // Display the first image of the set in the modal
+    const modalImg = document.getElementById('modal-img');
+    modalImg.src = currentImages[currentIndex];
 
-      window.onclick = (event) => {
-        if (event.target === modal) {
-          modal.style.display = "none";
-        }
-      };
+    // Show the modal
+    const modal = document.getElementById('modal');
+    modal.style.display = "block";
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = "none";
+  }
+
+  function showNextImage() {
+    currentIndex = (currentIndex + 1) % currentImages.length; // Move to the next image
+    updateModalImage();
+  }
+
+  function showPrevImage() {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; // Move to the previous image
+    updateModalImage();
+  }
+
+  function updateModalImage() {
+    const modalImg = document.getElementById('modal-img');
+    modalImg.src = currentImages[currentIndex];
+  }
+
+  // Event listeners
+  document.getElementById('product1').addEventListener('click', () => loadMoreImages(1));
+  document.getElementById('product2').addEventListener('click', () => loadMoreImages(2));
+
+  // Close modal when clicking outside the modal image
+  window.onclick = function(event) {
+    if (event.target == document.getElementById('modal')) {
+      closeModal();
     }
-
-    document.getElementById('product1').addEventListener('click', () => loadMoreImages(1));
-    document.getElementById('product2').addEventListener('click', () => loadMoreImages(2));
-
-    function closeModal() {
-      const modal = document.getElementById('modal');
-      modal.style.display = "none";
-    }
+  }
   </script>
 </body>
 </html>
-
