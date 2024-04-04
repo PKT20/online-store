@@ -73,40 +73,34 @@
       position: absolute;
     }
 
-    /* Close button */
     .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+  position: absolute;
+  top: 15px; /* Adjust to align within the modal */
+  right: 20px; /* Adjust to align within the modal */
+  color: rgb(243, 64, 228); /* Modern, muted icon color */
+  font-size: 30px; /* Refined size */
+  font-weight: normal; /* Less emphasis on boldness */
+  padding: 20px; /* Ample padding for easy click */
+  background-color: transparent; /* No background for a clean look */
+  border: none; /* No border for a sleek appearance */
+  border-radius: 50%; /* Rounded for a smooth look */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for interaction */
+}
 
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
-    }
+.close:hover,
+.close:focus {
+  color: #000; /* Darker color for interaction */
+  background-color: #e0e0e0; /* Subtle background color change on hover/focus */
+  transform: rotate(90deg); /* Rotate for a dynamic effect */
+}
 
     /* Add animation */
     @keyframes zoom {
       from {transform: scale(0)} 
       to {transform: scale(1)}
     }
-    /* Close button */
-        .close {
-    position: absolute;
-    top: 0%;
-     right: 0px;
-     color: #fdc8e9;
-    font-size: 1px;
-    font-weight: bold;
-    cursor: pointer;
-    }
- 
+    
  /* Style for the image container */
  .product {
   width: calc(30% - 20px);
@@ -148,22 +142,22 @@
       top: 50%;
       transform: translateY(-50%);
       font-size: 30px;
-      color: white;
+      color: rgb(243, 64, 228);
       z-index: 1010; /* Ensure arrows are above the image */
     }
 
     .arrow.left {
-      left: 10px;
+      left: 20px;
     }
 
     .arrow.right {
-      right: 10px;
+      right: 20px;
     }
     .top-message {
   text-align: center;
   padding: 10px 0;
   font-size: 15px;
-  background-color: #ffffff;
+  background-color: #fad4e485;
   color: #333;
   margin-bottom: 20px;
   position: sticky;
@@ -178,7 +172,7 @@
 
 .top-message a:hover {
   text-decoration: underline;
-}
+}   
 
 
   </style>
@@ -319,6 +313,7 @@ function closeModal() {
     // You might also want to update this event listener to prevent it from closing the modal when the image is clicked
     document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
   };
+  
 </script>
 </body>
 </html>
