@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doll Keychain</title>
+  
+  <style>
+    /* Style for the back button */
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(252, 185, 243, 0.5);
+      padding: 10px;
+      border-radius: 1px;
+      cursor: pointer;
+      font-family: 'Arial', sans-serif;
+      text-decoration: none;
+      color: #000;
+    }
+    /* Style for the header */
+    header {
+      background-image: url('images/giftbg.jpg'); /* Add your background image path here */
+      background-size: cover; /* Cover the entire header */
+      background-position: center; /* Center the background image */
+      color: #000000; /* White header text color */
+      padding: 20px 0; /* Add padding */
+      text-align: center; /* Center align text */
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      color: #000;
+      margin: 0;
+    }
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8; /* Light gray background */
+}
+    /* Product container */
+    .container {
+        padding: 10; /* Adjusted padding */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      /* Additional styles for the modal */
+    #modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Full-screen */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    }
+
+    #modal-img {
+      margin: auto;
+      display: block; /* Block display to allow use of margin auto */
+      width: 80%; /* Width of the image */
+      max-width: 700px; /* Maximum width */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    /* Close button */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Add animation */
+    @keyframes zoom {
+      from {transform: scale(0)} 
+      to {transform: scale(1)}
+    }
+    /* Close button */
+        .close {
+    position: absolute;
+    top: 0%;
+     right: 0px;
+     color: #fdc8e9;
+    font-size: 1px;
+    font-weight: bold;
+    cursor: pointer;
+    }
+ 
+    ..product {
+  width: calc(30% - 20px);
+  height: 200px; /* Adjust the height as needed */
+  padding: 0; /* Ensuring the image can use the full container space */
+  border: 2px solid #f8c1ea;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer; /* Add cursor pointer for product */
+  transition: all 0.3s ease, box-shadow 0.5s ease;
+  display: flex; /* Using flexbox to center the image */
+  justify-content: center; /* Center image horizontally */
+  align-items: center; /* Center image vertically */
+  background-color: #f8f8f8; /* Background color for any unfilled parts */
+}
+
+.product img {
+  max-width: 100%; /* Image can scale up to 100% of the container's width */
+  max-height: 100%; /* Image can scale up to 100% of the container's height */
+  object-fit: contain; /* Ensures the whole image is visible, may not cover the entire container */
+  border-radius: 8px; /* Matches the container's border-radius */
+}
+
+
+
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
+    }
+    @media only screen and (max-width: 600px) {
+      .container {
+        padding: 0; /* Adjusted padding */
+      }
+      .product {
+        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
+      }
+    }
+    /* Additional styles for arrows */
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      color: white;
+      z-index: 1010; /* Ensure arrows are above the image */
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+    .top-message {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 15px;
+  background-color: #ffffff;
+  color: #333;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.top-message a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.top-message a:hover {
+  text-decoration: underline;
+}   
+
+
+  </style>
+</head>
+<body>
+
+   <!-- Back button -->
+ <a href="index.html" class="back-button">Back</a>
+
+  <header>
+    <h1>Doll Keychain</h1>
+  </header>
+  <div class="top-message">
+    Please choose your favorite design here and kindly direct message to us on <a href="https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9" target="_blank">Instagram</a>.
+  </div>
+  <div class="container" id="product-list">
+    <!-- Product details will be dynamically inserted here -->
+  </div>
+  
+  <!-- Modal dialog to display the larger image -->
+  <div id="modal" class="modal">
+    <span class="close" ontouchstart="closeModal()" onclick="closeModal()">&times;</span>
+    <span class="arrow left" onclick="showPrevImage()">&#10094;</span> <!-- Left arrow -->
+    <img id="modal-img" class="modal-content">
+    <span class="arrow right" onclick="showNextImage()">&#10095;</span> <!-- Right arrow -->
+  </div>
+
+  <script>
+   
+    // Generate an array of products with images dk1.png to dk42.png
+    const extensions = ['JPG', 'JPG', 'JPG', 'JPG', 'JPG', 'PNG', 'PNG', 'PNG']; // Example extensions for each image
+
+const category1Products = Array.from({ length: 8 }, (v, i) => ({
+  image: `images/pb/pb${i + 1}.${extensions[i]}`, // Use the extension from the array
+  id: i + 1
+}));
+
+
+    function createProductElements() {
+      const productDetails = document.getElementById('product-list');
+      category1Products.forEach((product, index) => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+        productElement.innerHTML = `<img src="${product.image}" alt="Product Image ${product.id}" style="width:100%;height:auto;">`;
+        productElement.addEventListener('click', () => {
+          showModal(index); // Pass the index of the clicked image
+        });
+        productDetails.appendChild(productElement);
+      });
+    }
+    function handleBackButtonClick() {
+  const modal = document.getElementById('modal');
+  // Check if the modal is currently displayed
+  if (modal.style.display === "block") {
+    // Close the modal if it's open
+    closeModal();
+  } else {
+    // Navigate back to the category page if the modal is not open
+    window.location.href = 'category3.html'; // Change 'category-page.html' to your actual category page URL
+  }
+}
+
+function showModal(index) {
+  currentIndex = index; // Update the current index
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modal-img');
+  const backButton = document.querySelector('.back-button'); // Get the back button
+  modal.style.display = "block";
+  modalImg.src = category1Products[index].image;
+  modalImg.alt = "Enlarged Image";
+  backButton.style.visibility = 'hidden'; // Hide the back button
+}
+
+function closeModal() {
+  const modal = document.getElementById('modal');
+  const backButton = document.querySelector('.back-button'); // Get the back button
+  modal.style.display = "none";
+  backButton.style.visibility = 'visible'; // Show the back button again
+}
+
+
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    function checkSwipe() {
+      if (touchendX < touchstartX) showNextImage();
+      if (touchendX > touchstartX) showPrevImage();
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % category1Products.length; // Loop back to the first image if at the end
+      updateModalImage();
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex - 1 + category1Products.length) % category1Products.length; // Loop back to the last image if at the beginning
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = category1Products[currentIndex].image;
+    }
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % category1Products.length;
+      updateModalImage();
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex + 1 + category1Products.length) % category1Products.length;
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = category1Products[currentIndex].image;
+    }
+
+    window.onload = function() {
+    createProductElements();
+    const modal = document.getElementById('modal');
+
+    modal.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX;
+    });
+
+    modal.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX;
+      checkSwipe();
+    });
+
+    // Updated event listener for closing the modal
+    modal.addEventListener('click', function(event) {
+      // Check if the click (or touch) event is on the modal itself and not on its children (like the image)
+      if (event.target === modal) {
+        closeModal();
+        
+      }
+    });
+
+    // You might also want to update this event listener to prevent it from closing the modal when the image is clicked
+    document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
+  };
+  
+</script>
+</body>
+</html>
