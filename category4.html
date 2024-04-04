@@ -42,23 +42,25 @@
     }
 
     
-    #modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
+   /* Additional styles for the modal */
+   #modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Full-screen */
+      z-index: 1000; /* Sit on top */
       left: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.9);
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
     }
 
     #modal-img {
       margin: auto;
-      display: block;
-      width: 100%;
-      max-width: 700px;
+      display: block; /* Block display to allow use of margin auto */
+      width: 80%; /* Width of the image */
+      max-width: 700px; /* Maximum width */
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -96,25 +98,23 @@
 }
 
 .product {
-  flex: 0 0 calc(33.333% - 10px); /* Use flexbox to set the basis for each product */
-  margin: 1px; /* Margin around each product */
-  height: auto; /* Height is set to auto to maintain aspect ratio */
-  border: 2px solid #f8c1ea;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: all 0.3s ease, box-shadow 0.5s ease;
-  overflow: hidden; /* Hide overflow to maintain container shape */
-  display: flex;
-  justify-content: center; /* Center image horizontally */
-  align-items: center; /* Center image vertically */
-}
-
-.product img {
-  width: 100%; /* Image will scale to 100% of the container's width */
-  height: 100%; /* Image will scale to 100% of the container's height */
-  object-fit: cover; /* Cover the container, may result in clipping */
+  width: calc(30% - 20px);
+    height: 99px; /* Set a fixed height */
+      padding: 5px;
+      border: 2px solid #f8c1ea;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer; /* Add cursor pointer for product */
+      transition: all 0.3s ease, box-shadow 0.5s ease;
+      max-width: 100px;
+    }
+   
+    .product img {
+  width: 100%; /* Ensures the image width is the same as the container's */
+  height: 100%; /* Ensures the image height is the same as the container's */
+  object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
   border-radius: 8px; /* Optional: Matches the container's border-radius */
+  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
 }
 
 
@@ -141,19 +141,19 @@
 }
 
 .arrow.left {
-  left: 50px; /* Adjusted to bring the left arrow closer to the image */
-}
+      left: 20px;
+    }
 
-.arrow.right {
-  right: 50px; /* Adjusted to bring the right arrow closer to the image */
-}
+    .arrow.right {
+      right: 20px;
+    }
 
     
     .top-message {
       text-align: center;
       padding: 10px 0;
       font-size: 15px;
-      background-color: #ffffff;
+      background-color: #fad4e485;
       color: #333;
       margin-bottom: 20px;
       position: sticky;
@@ -245,15 +245,15 @@
     'images/pa/pa8.JPG', 
     'images/pa/pa7.JPG', 
     'images/pa/pa9.JPG',
-    'images/pa/pa10.JPG'
+    'images/pa/pa10.JPG',
+    'images/pa/pa47.JPG'
   ];
 
   let moreImagesProduct3 = [
     'images/pa/pa12.JPG', 
     'images/pa/pa13.JPG', 
     'images/pa/pa14.JPG',
-    'images/pa/pa15.JPG',
-    'images/pa/pa16.JPG'
+    'images/pa/pa15.JPG'
   ];
   let moreImagesProduct4 = [
     'images/pa/pa19.JPG', 
