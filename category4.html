@@ -66,21 +66,28 @@
     }
 
     .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-    }
+  position: absolute;
+  top: 15px; /* Adjust to align within the modal */
+  right: 20px; /* Adjust to align within the modal */
+  color: rgb(243, 64, 228); /* Modern, muted icon color */
+  font-size: 30px; /* Refined size */
+  font-weight: normal; /* Less emphasis on boldness */
+  padding: 20px; /* Ample padding for easy click */
+  background-color: transparent; /* No background for a clean look */
+  border: none; /* No border for a sleek appearance */
+  border-radius: 50%; /* Rounded for a smooth look */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for interaction */
+}
 
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
-    }
+.close:hover,
+.close:focus {
+  color: #000; /* Darker color for interaction */
+  background-color: #e0e0e0; /* Subtle background color change on hover/focus */
+  transform: rotate(90deg); /* Rotate for a dynamic effect */
+}
+
+
     .container {
   padding: 10px; /* Padding for the outside of the container */
   display: flex;
@@ -111,16 +118,13 @@
 }
 
 
-
-
-
     .product:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
     }
     @media only screen and (max-width: 600px) {
       .container {
-        padding: 0; /* Adjusted padding */
+        padding: 25px; /* Adjusted padding */
       }
       .product {
         width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
@@ -188,8 +192,8 @@
     <div class="product" id="product3">
       <img src="images/pa/pa12.JPG" alt="Initial Product 3">
     </div>
-    <div class="product" id="product4">
-      <img src="images/pa/pa19.JPG" alt="Initial Product 4">
+    <div class="product" id="product7">
+      <img src="images/pa/pa31.JPG" alt="Initial Product 7">
     </div>
     <div class="product" id="product5">
       <img src="images/pa/pa42.PNG" alt="Initial Product 5">
@@ -197,21 +201,21 @@
     <div class="product" id="product6">
       <img src="images/pa/pa26.JPG" alt="Initial Product 6">
     </div>
-    <div class="product" id="product7">
-      <img src="images/pa/pa31.JPG" alt="Initial Product 7">
-    </div>
-    <div class="product" id="product8">
-      <img src="images/pa/pa36.JPG" alt="Initial Product 8">
-    </div>
-    <div class="product" id="product9">
-      <img src="images/pa/pa34.JPG" alt="Initial Product 9">
-    </div>
-    <div class="product" id="product10">
-      <img src="images/pa/pa41.JPG" alt="Initial Product 10">
+    <div class="product" id="product4">
+      <img src="images/pa/pa19.JPG" alt="Initial Product 4">
     </div>
     <div class="product" id="product11">
       <img src="images/pa/pa17.JPG" alt="Initial Product 11">
     </div>
+        <div class="product" id="product9">
+      <img src="images/pa/pa34.JPG" alt="Initial Product 9">
+    </div>
+    <div class="product" id="product10">
+      <img src="images/pa/pa41.JPG" alt="Initial Product 10">
+    </div><div class="product" id="product8">
+      <img src="images/pa/pa36.JPG" alt="Initial Product 8">
+    </div>
+    
     <div class="product" id="product12">
       <img src="images/pa/pa5.JPG" alt="Initial Product 12">
     </div>
