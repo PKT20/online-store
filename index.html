@@ -51,18 +51,20 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center; /* Center products horizontally */
-      padding: 1%;
+      padding: 5%;
     }
 
     .product {
-      width: calc(25% - 20px); /* Adjusted width for 4 products per row with spacing */
-      margin: 10px;
-      padding: 20px;
-      background-color: #ffdbdf;
-      border-radius: 15px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-      transition: transform 0.3s ease;
-    }
+  width: calc(25% - 20px); /* Adjusted width for 4 products per row with spacing */
+  margin: 10px;
+  padding: 20px;
+  background-color: #ffdbdf;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: transform 0.3s ease;
+  min-height: 50px; /* Minimum height to accommodate content */
+}
+
 
     .product:hover {
       transform: translateY(-5px);
