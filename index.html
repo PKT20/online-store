@@ -51,14 +51,14 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center; /* Center products horizontally */
-      padding: 20px;
+      padding: 1%;
     }
 
     .product {
       width: calc(25% - 20px); /* Adjusted width for 4 products per row with spacing */
       margin: 10px;
       padding: 20px;
-      background-color: #fff;
+      background-color: #ffdbdf;
       border-radius: 15px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
       transition: transform 0.3s ease;
@@ -72,11 +72,9 @@
     .product img {
     width: 100%; /* Fill the width of the container */
     height: 200px; /* Fixed height for all images */
-    object-fit: contain; /* Ensure the whole image fits within the box, might leave some empty space */
+    object-fit: cover; /* Ensure the whole image fits within the box, might leave some empty space */
     border-radius: 15px; /* Rounded corners for images */
 }
-
-
 
     .product-details {
       padding: 10px;
