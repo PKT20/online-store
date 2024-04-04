@@ -110,7 +110,7 @@
     ..product {
   width: calc(30% - 20px);
   height: 200px; /* Adjust the height as needed */
-  padding: 0; /* Ensuring the image can use the full container space */
+  padding: 50; /* Ensuring the image can use the full container space */
   border: 2px solid #f8c1ea;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -211,120 +211,56 @@
 
   <script>
    
-    // Generate an array of products with images dk1.png to dk42.png
-    const extensions = ['JPG', 'JPG', 'JPG', 'JPG', 'JPG', 'PNG', 'PNG', 'PNG']; // Example extensions for each image
+    // Array to hold the product images
+    const category1Products = Array.from({ length: 8 }, (v, i) => ({
+      image: `images/pb/pb${i + 1}.${i < 5 ? 'JPG' : 'PNG'}`, // Use JPG for the first 5 images, PNG for the rest
+      id: i + 1
+    }));
 
-const category1Products = Array.from({ length: 8 }, (v, i) => ({
-  image: `images/pb/pb${i + 1}.${extensions[i]}`, // Use the extension from the array
-  id: i + 1
-}));
+    let currentIndex = 0; // Variable to track the current image index
 
+    function showModal(index) {
+      currentIndex = index; // Set the current index to the index of the clicked image
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      modal.style.display = "block";
+      modalImg.src = category1Products[currentIndex].image;
+    }
 
+    function closeModal() {
+      document.getElementById('modal').style.display = "none";
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % category1Products.length; // Increment the index, loop back to 0 if at the end
+      document.getElementById('modal-img').src = category1Products[currentIndex].image;
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex - 1 + category1Products.length) % category1Products.length; // Decrement the index, loop back to the last image if at the beginning
+      document.getElementById('modal-img').src = category1Products[currentIndex].image;
+    }
+
+    // Create product elements dynamically and add event listeners
     function createProductElements() {
       const productDetails = document.getElementById('product-list');
       category1Products.forEach((product, index) => {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
-        productElement.innerHTML = `<img src="${product.image}" alt="Product Image ${product.id}" style="width:100%;height:auto;">`;
-        productElement.addEventListener('click', () => {
-          showModal(index); // Pass the index of the clicked image
-        });
+        productElement.innerHTML = `<img src="${product.image}" alt="Product Image ${product.id}">`;
+        productElement.addEventListener('click', () => showModal(index));
         productDetails.appendChild(productElement);
       });
     }
-    function handleBackButtonClick() {
-  const modal = document.getElementById('modal');
-  // Check if the modal is currently displayed
-  if (modal.style.display === "block") {
-    // Close the modal if it's open
-    closeModal();
-  } else {
-    // Navigate back to the category page if the modal is not open
-    window.location.href = 'category3.html'; // Change 'category-page.html' to your actual category page URL
-  }
-}
-
-function showModal(index) {
-  currentIndex = index; // Update the current index
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modal-img');
-  const backButton = document.querySelector('.back-button'); // Get the back button
-  modal.style.display = "block";
-  modalImg.src = category1Products[index].image;
-  modalImg.alt = "Enlarged Image";
-  backButton.style.visibility = 'hidden'; // Hide the back button
-}
-
-function closeModal() {
-  const modal = document.getElementById('modal');
-  const backButton = document.querySelector('.back-button'); // Get the back button
-  modal.style.display = "none";
-  backButton.style.visibility = 'visible'; // Show the back button again
-}
-
-
-    let touchstartX = 0;
-    let touchendX = 0;
-
-    function checkSwipe() {
-      if (touchendX < touchstartX) showNextImage();
-      if (touchendX > touchstartX) showPrevImage();
-    }
-
-    function showNextImage() {
-      currentIndex = (currentIndex + 1) % category1Products.length; // Loop back to the first image if at the end
-      updateModalImage();
-    }
-
-    function showPrevImage() {
-      currentIndex = (currentIndex - 1 + category1Products.length) % category1Products.length; // Loop back to the last image if at the beginning
-      updateModalImage();
-    }
-
-    function updateModalImage() {
-      const modalImg = document.getElementById('modal-img');
-      modalImg.src = category1Products[currentIndex].image;
-    }
-    function showNextImage() {
-      currentIndex = (currentIndex + 1) % category1Products.length;
-      updateModalImage();
-    }
-
-    function showPrevImage() {
-      currentIndex = (currentIndex + 1 + category1Products.length) % category1Products.length;
-      updateModalImage();
-    }
-
-    function updateModalImage() {
-      const modalImg = document.getElementById('modal-img');
-      modalImg.src = category1Products[currentIndex].image;
-    }
 
     window.onload = function() {
-    createProductElements();
-    const modal = document.getElementById('modal');
-
-    modal.addEventListener('touchstart', e => {
-      touchstartX = e.changedTouches[0].screenX;
-    });
-
-    modal.addEventListener('touchend', e => {
-      touchendX = e.changedTouches[0].screenX;
-      checkSwipe();
-    });
-
-    // Updated event listener for closing the modal
-    modal.addEventListener('click', function(event) {
-      // Check if the click (or touch) event is on the modal itself and not on its children (like the image)
-      if (event.target === modal) {
-        closeModal();
-        
-      }
-    });
-
-    // You might also want to update this event listener to prevent it from closing the modal when the image is clicked
-    document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
-  };
+      createProductElements();
+      document.getElementById('modal').addEventListener('click', (event) => {
+        if (event.target.classList.contains('close') || event.target === document.getElementById('modal')) {
+          closeModal();
+        }
+      });
+    };
   
 </script>
 </body>
