@@ -55,15 +55,20 @@
     }
 
     .product {
-  width: calc(25% - 20px); /* Adjusted width for 4 products per row with spacing */
+  position: relative; /* Added this line */
+  width: calc(25% - 20px);
   margin: 10px;
   padding: 20px;
   background-color: #ffdbdf;
   border-radius: 15px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
-  min-height: 50px; /* Minimum height to accommodate content */
+  min-height: 50px; /* Adjusted from 'auto' to '50px' */
+  display: flex; /* Added to use flexbox */
+  flex-direction: column; /* Stack children vertically */
+  justify-content: space-between; /* Space between content and button */
 }
+
 
 
     .product:hover {
@@ -178,11 +183,29 @@
 
 @media only screen and (max-width: 600px) {
   .product {
-    width: calc(33.33% - 0px); /* Adjust width for 3 products per row */
+    width: calc(25% - 0px); /* Adjust width for 3 products per row */
     margin: 10px; /* Adjust margin for consistency */
     padding: 10px; /* Adjust padding for a balanced look */
     min-height: Auto; /* Adjust minimum height as needed */
   }
+}
+button {
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 10px;
+ 
+  border-radius: 25px; /* Rounded edges */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+button:hover {
+  background: linear-gradient(to right, #c13584, #e1306c, #833ab4);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+  transform: translateY(-2px); /* Slight lift effect */
 }
 
 
