@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Doll Keychain</title>
-    <style>
+  <title>Pillows</title>
+  <style>
     /* Style for the back button */
     .back-button {
       position: fixed;
       top: 20px;
       left: 20px;
-      z-index: 9999;
       background-color: rgba(252, 185, 243, 0.5);
       padding: 10px;
       border-radius: 5px;
@@ -18,7 +17,9 @@
       font-family: 'Arial', sans-serif;
       text-decoration: none;
       color: #000;
+      z-index: 1000;
     }
+
     /* Style for the header */
     header {
       background-image: url('images/giftbg.jpg'); /* Add your background image path here */
@@ -35,20 +36,74 @@
       color: #000;
       margin: 0;
     }
+
     body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f8f8; /* Light gray background */
-}
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8; /* Light gray background */
+    }
+
     /* Product container */
     .container {
-        padding: 0; /* Adjusted padding */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+      padding: 0 20px; /* Adjusted padding */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .product {
+      width: calc(50% - 20px); /* Two items per row */
+      margin: 10px;
+      padding: 15px;
+      border: 2px solid #f8c1ea;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer; /* Add cursor pointer for product */
+      transition: all 0.3s ease, box-shadow 0.5s ease;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      background-color: #f8f8f8;
+    }
+
+    .product-name {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .view-button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #ff6f91;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .view-button:hover {
+      background-color: #ff3b6f;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .product {
+        width: calc(50% - 10px); /* Two items per row on mobile */
+        margin: 5px;
       }
-      /* Additional styles for the modal */
+    }
+
+    /* Additional styles for the modal */
     #modal {
       display: none; /* Hidden by default */
       position: fixed; /* Full-screen */
@@ -96,51 +151,7 @@
       from {transform: scale(0)} 
       to {transform: scale(1)}
     }
-    /* Close button */
-        .close {
-    position: absolute;
-    top: 0%;
-     right: 0px;
-     color: #fdc8e9;
-    font-size: 1px;
-    font-weight: bold;
-    cursor: pointer;
-    }
- 
- /* Style for the image container */
- .product {
-  width: calc(30% - 20px);
-    height: 99px; /* Set a fixed height */
-      padding: 5px;
-      border: 2px solid #f8c1ea;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      cursor: pointer; /* Add cursor pointer for product */
-      transition: all 0.3s ease, box-shadow 0.5s ease;
-      max-width: 100px;
-    }
-   
-    .product img {
-  width: 100%; /* Ensures the image width is the same as the container's */
-  height: 100%; /* Ensures the image height is the same as the container's */
-  object-fit: contain; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
-  border-radius: 8px; /* Optional: Matches the container's border-radius */
-  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
-}
 
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
-    }
-    @media only screen and (max-width: 600px) {
-      .container {
-        padding: 0; /* Adjusted padding */
-      }
-      .product {
-        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
-      }
-    }
     /* Additional styles for arrows */
     .arrow {
       cursor: pointer;
@@ -159,37 +170,36 @@
     .arrow.right {
       right: 10px;
     }
+
     .top-message {
-  text-align: center;
-  padding: 10px 0;
-  font-size: 15px;
-  background-color: #ffffff;
-  color: #333;
-  margin-bottom: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+      text-align: center;
+      padding: 10px 0;
+      font-size: 15px;
+      background-color: #ffffff;
+      color: #333;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.top-message a {
-  color: #007bff;
-  text-decoration: none;
-}
+    .top-message a {
+      color: #007bff;
+      text-decoration: none;
+    }
 
-.top-message a:hover {
-  text-decoration: underline;
-}
-
-
+    .top-message a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
 
-   <!-- Back button -->
- <a href="index.html" class="back-button">Back</a>
+  <!-- Back button -->
+  <a href="index.html" class="back-button">Back</a>
 
   <header>
-    <h1>Doll Keychain</h1>
+    <h1>Pillows</h1>
   </header>
   <div class="top-message">
     Please choose your favorite design here and kindly direct message to us on <a href="https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9" target="_blank">Instagram</a>.
@@ -207,55 +217,60 @@
   </div>
 
   <script>
-   
-    // Generate an array of products with images dk1.png to dk42.png
-    const category1Products = Array.from({ length: 62 }, (v, i) => ({
-      image: `images/dk${i + 1}.PNG`,
-      id: i + 1
-    }));
+    const products = [
+      { name: "Print Pic on Pillow", image: "images/pl/printpiconpillow.jpg" },
+      { name: "Family Pillow", image: "images/pl/familypillow.png" },
+      { name: "Kid Pillow", image: "images/pl/kidpillow.png" },
+      { name: "Couple Pillow", image: "images/pl/couplepillow.png" },
+      { name: "Single Pillow", image: "images/pl/singlepillow.png" },
+      { name: "Graduation Pillow", image: "images/pl/graduationpillow.jpg" },
+    ];
 
     function createProductElements() {
       const productDetails = document.getElementById('product-list');
-      category1Products.forEach((product, index) => {
+      products.forEach((product, index) => {
         const productElement = document.createElement('div');
         productElement.classList.add('product');
-        productElement.innerHTML = `<img src="${product.image}" alt="Product Image ${product.id}" style="width:100%;height:auto;">`;
-        productElement.addEventListener('click', () => {
-          showModal(index); // Pass the index of the clicked image
-        });
+        productElement.innerHTML = `
+          <img src="${product.image}" alt="${product.name}">
+          <div class="product-name">${product.name}</div>
+          <a href="#" class="view-button" onclick="showModal(${index})">View Products</a>
+        `;
         productDetails.appendChild(productElement);
       });
     }
+
     function handleBackButtonClick() {
-  const modal = document.getElementById('modal');
-  // Check if the modal is currently displayed
-  if (modal.style.display === "block") {
-    // Close the modal if it's open
-    closeModal();
-  } else {
-    // Navigate back to the category page if the modal is not open
-    window.location.href = 'category3.html'; // Change 'category-page.html' to your actual category page URL
-  }
-}
+      const modal = document.getElementById('modal');
+      // Check if the modal is currently displayed
+      if (modal.style.display === "block") {
+        // Close the modal if it's open
+        closeModal();
+      } else {
+        // Navigate back to the category page if the modal is not open
+        window.location.href = 'category3.html'; // Change 'category-page.html' to your actual category page URL
+      }
+    }
 
-function showModal(index) {
-  currentIndex = index; // Update the current index
-  const modal = document.getElementById('modal');
-  const modalImg = document.getElementById('modal-img');
-  const backButton = document.querySelector('.back-button'); // Get the back button
-  modal.style.display = "block";
-  modalImg.src = category1Products[index].image;
-  modalImg.alt = "Enlarged Image";
-  backButton.style.visibility = 'hidden'; // Hide the back button
-}
+    let currentIndex = 0;
 
-function closeModal() {
-  const modal = document.getElementById('modal');
-  const backButton = document.querySelector('.back-button'); // Get the back button
-  modal.style.display = "none";
-  backButton.style.visibility = 'visible'; // Show the back button again
-}
+    function showModal(index) {
+      currentIndex = index; // Update the current index
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
+      const backButton = document.querySelector('.back-button'); // Get the back button
+      modal.style.display = "block";
+      modalImg.src = products[index].image;
+      modalImg.alt = products[index].name;
+      backButton.style.visibility = 'hidden'; // Hide the back button
+    }
 
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      const backButton = document.querySelector('.back-button'); // Get the back button
+      modal.style.display = "none";
+      backButton.style.visibility = 'visible'; // Show the back button again
+    }
 
     let touchstartX = 0;
     let touchendX = 0;
@@ -266,59 +281,45 @@ function closeModal() {
     }
 
     function showNextImage() {
-      currentIndex = (currentIndex + 1) % category1Products.length; // Loop back to the first image if at the end
+      currentIndex = (currentIndex + 1) % products.length; // Loop back to the first image if at the end
       updateModalImage();
     }
 
     function showPrevImage() {
-      currentIndex = (currentIndex - 1 + category1Products.length) % category1Products.length; // Loop back to the last image if at the beginning
+      currentIndex = (currentIndex - 1 + products.length) % products.length; // Loop back to the last image if at the beginning
       updateModalImage();
     }
 
     function updateModalImage() {
       const modalImg = document.getElementById('modal-img');
-      modalImg.src = category1Products[currentIndex].image;
-    }
-    function showNextImage() {
-      currentIndex = (currentIndex + 1) % category1Products.length;
-      updateModalImage();
-    }
-
-    function showPrevImage() {
-      currentIndex = (currentIndex + 1 + category1Products.length) % category1Products.length;
-      updateModalImage();
-    }
-
-    function updateModalImage() {
-      const modalImg = document.getElementById('modal-img');
-      modalImg.src = category1Products[currentIndex].image;
+      modalImg.src = products[currentIndex].image;
+      modalImg.alt = products[currentIndex].name;
     }
 
     window.onload = function() {
-    createProductElements();
-    const modal = document.getElementById('modal');
+      createProductElements();
+      const modal = document.getElementById('modal');
 
-    modal.addEventListener('touchstart', e => {
-      touchstartX = e.changedTouches[0].screenX;
-    });
+      modal.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+      });
 
-    modal.addEventListener('touchend', e => {
-      touchendX = e.changedTouches[0].screenX;
-      checkSwipe();
-    });
+      modal.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        checkSwipe();
+      });
 
-    // Updated event listener for closing the modal
-    modal.addEventListener('click', function(event) {
-      // Check if the click (or touch) event is on the modal itself and not on its children (like the image)
-      if (event.target === modal) {
-        closeModal();
-        
-      }
-    });
+      // Updated event listener for closing the modal
+      modal.addEventListener('click', function(event) {
+        // Check if the click (or touch) event is on the modal itself and not on its children (like the image)
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
 
-    // You might also want to update this event listener to prevent it from closing the modal when the image is clicked
-    document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
-  };
-</script>
+      // You might also want to update this event listener to prevent it from closing the modal when the image is clicked
+      document.getElementsByClassName('close')[0].addEventListener('click', closeModal);
+    };
+  </script>
 </body>
 </html>
