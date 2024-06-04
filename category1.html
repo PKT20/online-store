@@ -187,7 +187,12 @@
       color: #007bff;
       text-decoration: none;
     }
-
+    @media only screen and (max-width: 600px) {
+      .product {
+        width: calc(50% - 10px); /* Two items per row on mobile */
+        margin: 5px;
+      }}
+    
     .top-message a:hover {
       text-decoration: underline;
     }
