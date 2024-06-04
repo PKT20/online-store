@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo Album</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <title>Pillows</title>
   <style>
+    /* Style for the back button */
     .back-button {
       position: fixed;
       top: 20px;
@@ -16,372 +18,295 @@
       font-family: 'Arial', sans-serif;
       text-decoration: none;
       color: #000;
+      z-index: 1000;
     }
 
-    header {
-      background-image: url('images/giftbg.jpg');
-      background-size: cover;
-      background-position: center;
-      color: #000000;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    h1 {
-      font-family: 'Pacifico', cursive;
-      font-size: 36px;
-      color: #000;
-      margin: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f8f8;
-    }
-
-    
-   /* Additional styles for the modal */
-   #modal {
+    /* CSS for modal */
+    .modal {
       display: none; /* Hidden by default */
-      position: fixed; /* Full-screen */
-      z-index: 1000; /* Sit on top */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
       left: 0;
       top: 0;
       width: 100%; /* Full width */
       height: 100%; /* Full height */
       overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0, 0, 0); /* Fallback color */
-      background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+      background-color: rgba(255, 182, 193, 0.9); /* Light pink background color */
     }
 
-    #modal-img {
+    /* Modal content */
+    .modal-content {
       margin: auto;
-      display: block; /* Block display to allow use of margin auto */
-      width: 80%; /* Width of the image */
-      max-width: 700px; /* Maximum width */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      position: absolute;
+      display: block;
+      max-width: 80%;
+      max-height: 80%;
     }
 
+    /* Close button */
     .close {
-  position: absolute;
-  top: 15px; /* Adjust to align within the modal */
-  right: 20px; /* Adjust to align within the modal */
-  color: rgb(243, 64, 228); /* Modern, muted icon color */
-  font-size: 30px; /* Refined size */
-  font-weight: normal; /* Less emphasis on boldness */
-  padding: 20px; /* Ample padding for easy click */
-  background-color: transparent; /* No background for a clean look */
-  border: none; /* No border for a sleek appearance */
-  border-radius: 50%; /* Rounded for a smooth look */
-  cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition for interaction */
-}
-
-.close:hover,
-.close:focus {
-  color: #000; /* Darker color for interaction */
-  background-color: #e0e0e0; /* Subtle background color change on hover/focus */
-  transform: rotate(90deg); /* Rotate for a dynamic effect */
-}
-
-    .container {
-  padding: 10px; /* Padding for the outside of the container */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* This will create space between the items */
-}
-
-.product {
-  width: calc(30% - 20px);
-    height: 99px; /* Set a fixed height */
-      padding: 5px;
-      border: 2px solid #f8c1ea;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      cursor: pointer; /* Add cursor pointer for product */
-      transition: all 0.3s ease, box-shadow 0.5s ease;
-      max-width: 100px;
-    }
-   
-    .product img {
-  width: 100%; /* Ensures the image width is the same as the container's */
-  height: 100%; /* Ensures the image height is the same as the container's */
-  object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
-  border-radius: 8px; /* Optional: Matches the container's border-radius */
-  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
-}
-
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
-    }
-    @media only screen and (max-width: 600px) {
-      .container {
-        padding: 25px; /* Adjusted padding */
-      }
-      .product {
-        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
-      }
-    }
-    .arrow {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 35px;
-  color: rgb(243, 61, 228);
-  z-index: 1010; /* Ensure arrows are above the image */
-}
-
-.arrow.left {
-      left: 20px;
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
     }
 
-    .arrow.right {
-      right: 20px;
-    }
-
-    
-    .top-message {
-      text-align: center;
-      padding: 10px 0;
-      font-size: 15px;
-      background-color: #fad4e485;
-      color: #333;
-      margin-bottom: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .top-message a {
-      color: #007bff;
+    .close:hover,
+    .close:focus {
+      color: #bbb;
       text-decoration: none;
     }
 
-    .top-message a:hover {
-      text-decoration: underline;
+    /* Product container */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* Center products horizontally */
+      padding: 2%;
+    }
+
+    .product {
+      position: relative;
+      width: calc(50% - 20px); /* Two items per row */
+      margin: 10px;
+      padding: 0; /* Remove padding */
+      border-radius: 10px; /* Rounded corners for the container */
+      overflow: hidden; /* Ensures nothing goes beyond the border radius */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      display: flex; /* Use flexbox for layout */
+      flex-direction: column; /* Stack children vertically */
+      align-items: center; /* Center content horizontally */
+      border: 0px solid #FFC0CB; /* 2px solid pink border */
+    }
+
+    .product img {
+      width: 100%; /* Ensure image covers full container width */
+      height: 200px; /* Set a fixed height for the images */
+      object-fit: cover; /* Cover the container completely */
+      transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    .product:hover img {
+      transform: scale(1.05); /* Slight zoom effect on hover */
+    }
+
+    .product-details {
+      width: 100%; /* Full container width */
+      background-color: rgba(245, 125, 125, 0.5); /* Semi-transparent overlay */
+      color: #000000; /* Black text color */
+      text-align: center; /* Center-align text */
+      padding: 10px 0; /* Padding for spacing */
+    }
+
+    .product-name {
+      margin: 0; /* Remove margin */
+      font-size: 16px; /* Adjust font size as needed */
+    }
+
+    /* CSS for chat toggle button */
+    .chat-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(to right, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      line-height: 80px; /* Vertically center text */
+      cursor: pointer;
+      z-index: 999; /* Ensure it's above other elements */
+      font-family: 'Arial', sans-serif; /* Change font if needed */
+      color: #fff; /* White color for text */
+      font-size: 15px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .chat-toggle:hover {
+      transform: scale(1.1); /* Scale button on hover */
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8); /* Increase shadow on hover */
+    }
+
+    /* Style for the header */
+    header {
+      background-image: url('images/giftbg.jpg'); /* Add your background image path here */
+      background-size: cover; /* Cover the entire header */
+      background-position: center; /* Center the background image */
+      color: #000000; /* White header text color */
+      padding: 20px 0; /* Add padding */
+      text-align: center; /* Center align text */
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 50px;
+      color: #000;
+      margin: 0;
+    }
+
+    .step-container {
+      display: flex;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #fad4e485, #fad4e485);
+      padding: 2px;
+      font-family: 'Poppins', sans-serif;
+      position: relative;
+    }
+
+    .step {
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 5px 10px; /* Reduced padding for a more compact look */
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -40px; /* Adjust based on your layout */
+      width: 60px; /* Width of the line */
+      height: 2px;
+      z-index: 0;
+    }
+
+    .icon {
+      font-size: 30px; /* Reduced icon size for compactness */
+      color: #D63384;
+      z-index: 1;
+    }
+
+    .step-text {
+      margin-left: 15px;
+      text-align: left;
+    }
+
+    .step-title {
+      font-size: 16px; /* Smaller title for compactness */
+      color: #D63384;
+      font-weight: bold;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .product {
+        width: calc(50% - 10px); /* Two items per row on mobile */
+        margin: 5px;
+      }
+    }
+
+    button {
+      background: #ffffff;
+      color: #D63384;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 10px;
+      border-radius: 25px; /* Rounded edges */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+      transition: all 0.3s ease; /* Smooth transition for hover effects */
     }
   </style>
+  <!-- Link to Google Fonts for Pacifico font -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9034226143535954"
+  crossorigin="anonymous"></script>
 </head>
 <body>
-  <a href="category1.html" class="back-button">Back</a>
+
+  <!-- Back button -->
+  <a href="index.html" class="back-button">Back</a>
 
   <header>
-    <h1>Photo Album</h1>
+    <h1>Pillows</h1>
   </header>
-
-  <div class="top-message">
+  <div class="step-container">
     Please choose your favorite design here and kindly direct message to us on <a href="https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9" target="_blank">Instagram</a>.
   </div>
-
   <div class="container" id="product-list">
-    <div class="product" id="product1">
-      <img src="images/pa/pa1.JPG" alt="Initial Product 1">
+    <div class="product" onclick="openPrintPicOnPillow()">
+      <img src="images/pl/printpiconpillow.jpg" alt="Product 1">
+      <div class="product-details">
+        <h2 class="product-name">Print Pic on Pillow</h2>
+        <button onclick="openPrintPicOnPillow()">View Products</button>
+      </div>
     </div>
-    <div class="product" id="product2">
-      <img src="images/pa/pa8.JPG" alt="Initial Product 2">
+    <div class="product" onclick="openFamilyPillow()">
+      <img src="images/pl/familypillow.PNG" alt="Product 2">
+      <div class="product-details">
+        <h2 class="product-name">Family Photo</h2>
+        <button onclick="openFamilyPillow()">View Products</button>
+      </div>
     </div>
-    <div class="product" id="product3">
-      <img src="images/pa/pa12.JPG" alt="Initial Product 3">
+    <div class="product" onclick="openKidPillow()">
+      <img src="images/pl/kidpillow.PNG" alt="Product 3">
+      <div class="product-details">
+        <h2 class="product-name">Kid Pillow</h2>
+        <button onclick="openKidPillow()">View Products</button>
+      </div>
     </div>
-    <div class="product" id="product7">
-      <img src="images/pa/pa31.JPG" alt="Initial Product 7">
+    <div class="product" onclick="openCouplePillow()">
+      <img src="images/pl/couplepillow.PNG" alt="Product 4">
+      <div class="product-details">
+        <h2 class="product-name">Couple Pillow</h2>
+        <button onclick="openCouplePillow()">View Products</button>
+      </div>
     </div>
-    <div class="product" id="product5">
-      <img src="images/pa/pa42.PNG" alt="Initial Product 5">
+    <div class="product" onclick="openSinglePillow()">
+      <img src="images/pl/singlepillow.PNG" alt="Product 5">
+      <div class="product-details">
+        <h2 class="product-name">Single Pillow</h2>
+        <button onclick="openSinglePillow()">View Products</button>
+      </div>
     </div>
-    <div class="product" id="product6">
-      <img src="images/pa/pa26.JPG" alt="Initial Product 6">
-    </div>
-    <div class="product" id="product4">
-      <img src="images/pa/pa19.JPG" alt="Initial Product 4">
-    </div>
-    <div class="product" id="product11">
-      <img src="images/pa/pa17.JPG" alt="Initial Product 11">
-    </div>
-        <div class="product" id="product9">
-      <img src="images/pa/pa34.JPG" alt="Initial Product 9">
-    </div>
-    <div class="product" id="product10">
-      <img src="images/pa/pa41.JPG" alt="Initial Product 10">
-    </div><div class="product" id="product8">
-      <img src="images/pa/pa36.JPG" alt="Initial Product 8">
-    </div>
-    
-    <div class="product" id="product12">
-      <img src="images/pa/pa5.JPG" alt="Initial Product 12">
+    <div class="product" onclick="openGraduationPillow()">
+      <img src="images/pl/graduationpillow.jpg" alt="Product 6">
+      <div class="product-details">
+        <h2 class="product-name">Graduation Pillow</h2>
+        <button onclick="openGraduationPillow()">View Products</button>
+      </div>
     </div>
   </div>
 
-  <div id="modal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <span class="arrow left" onclick="showPrevImage()">&#10094;</span> <!-- Left arrow -->
-    <img id="modal-img" class="modal-content">
-    <span class="arrow right" onclick="showNextImage()">&#10095;</span> <!-- Right arrow -->
-</div>
-
+  <!-- Chat toggle button -->
+  <div class="chat-toggle" onclick="openChat()">Instagram</div>
 
   <script>
-    let currentIndex = 0; // Global index to track the current image
-  let currentImages = []; // Holds the images for the current product
+    // Function to open the modal and display the larger image
+    function openModal(imageSrc) {
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modal-img');
 
-  function loadMoreImages(containerId) {
-  let moreImagesProduct1 = [
-    'images/pa/pa1.JPG', 
-    'images/pa/pa2.JPG', 
-    'images/pa/pa3.JPG',
-    'images/pa/pa4.JPG'
-  ];
-
-  let moreImagesProduct2 = [
-    'images/pa/pa8.JPG', 
-    'images/pa/pa7.JPG', 
-    'images/pa/pa9.JPG',
-    'images/pa/pa10.JPG',
-    'images/pa/pa47.JPG'
-  ];
-
-  let moreImagesProduct3 = [
-    'images/pa/pa12.JPG', 
-    'images/pa/pa13.JPG', 
-    'images/pa/pa14.JPG',
-    'images/pa/pa15.JPG'
-  ];
-  let moreImagesProduct4 = [
-    'images/pa/pa19.JPG', 
-    'images/pa/pa20.JPG', 
-    'images/pa/pa21.JPG',
-    'images/pa/pa22.JPG'
-  ];
-  let moreImagesProduct5 = [
-    'images/pa/pa42.PNG',
-    'images/pa/pa23.JPG', 
-    'images/pa/pa24.JPG', 
-    'images/pa/pa25.JPG'
-  ];
-  let moreImagesProduct6 = [
-    'images/pa/pa26.JPG', 
-    'images/pa/pa27.JPG', 
-    'images/pa/pa28.JPG', 
-    'images/pa/pa29.JPG',
-    'images/pa/pa30.JPG'
-  ];
-  let moreImagesProduct7 = [
-    'images/pa/pa31.JPG', 
-    'images/pa/pa32.JPG', 
-    'images/pa/pa33.JPG'
-     ];
-
-  let moreImagesProduct8 = [
-    'images/pa/pa36.JPG', 
-    'images/pa/pa35.JPG', 
-    'images/pa/pa37.JPG',
-    'images/pa/pa38.JPG'
-  ];
-
-  let moreImagesProduct9 = [
-    'images/pa/pa34.JPG', 
-    'images/pa/pa43.JPG', 
-    'images/pa/pa44.PNG',
-    'images/pa/pa45.PNG',
-    'images/pa/pa46.PNG'
-  ];
-  let moreImagesProduct10 = [
-    'images/pa/pa41.JPG', 
-    'images/pa/pa39.JPG', 
-    'images/pa/pa40.JPG'
-  ];
-  let moreImagesProduct11 = [
-  'images/pa/pa17.JPG', 
-  'images/pa/pa18.JPG'
-  ];
-  let moreImagesProduct12 = [
-  'images/pa/pa5.JPG', 
-  'images/pa/pa6.JPG'
-  ];
-
-  // Determine which set of images to use
-  if (containerId === 1) {
-    currentImages = moreImagesProduct1;
-  } else if (containerId === 2) {
-    currentImages = moreImagesProduct2;
-  } else if (containerId === 3) {
-    currentImages = moreImagesProduct3;
-  } else if (containerId === 4) {
-    currentImages = moreImagesProduct4;
-  } else if (containerId === 5) {
-    currentImages = moreImagesProduct5;
-  } else if (containerId === 6) {
-    currentImages = moreImagesProduct6;
-  } else if (containerId === 7) {
-    currentImages = moreImagesProduct7;
-  } else if (containerId === 8) {
-    currentImages = moreImagesProduct8;
-  } else if (containerId === 9) {
-    currentImages = moreImagesProduct9;
-  } else if (containerId === 10) {
-    currentImages = moreImagesProduct10;
-  } else if (containerId === 11) {
-    currentImages = moreImagesProduct11;
-  } else if (containerId === 12) {
-    currentImages = moreImagesProduct12;
-  }
-
-    // Display the first image of the set in the modal
-    const modalImg = document.getElementById('modal-img');
-    modalImg.src = currentImages[currentIndex];
-
-    // Show the modal
-    const modal = document.getElementById('modal');
-    modal.style.display = "block";
-  }
-
-  function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = "none";
-  }
-
-  function showNextImage() {
-    currentIndex = (currentIndex + 1) % currentImages.length; // Move to the next image
-    updateModalImage();
-  }
-
-  function showPrevImage() {
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; // Move to the previous image
-    updateModalImage();
-  }
-
-  function updateModalImage() {
-    const modalImg = document.getElementById('modal-img');
-    modalImg.src = currentImages[currentIndex];
-  }
-
-  // Event listeners
-  document.getElementById('product1').addEventListener('click', () => loadMoreImages(1));
-  document.getElementById('product2').addEventListener('click', () => loadMoreImages(2));
-  document.getElementById('product3').addEventListener('click', () => loadMoreImages(3));
-  document.getElementById('product4').addEventListener('click', () => loadMoreImages(4));
-  document.getElementById('product5').addEventListener('click', () => loadMoreImages(5));
-  document.getElementById('product6').addEventListener('click', () => loadMoreImages(6));
-  document.getElementById('product7').addEventListener('click', () => loadMoreImages(7));
-  document.getElementById('product8').addEventListener('click', () => loadMoreImages(8));
-  document.getElementById('product9').addEventListener('click', () => loadMoreImages(9));
-  document.getElementById('product10').addEventListener('click', () => loadMoreImages(10));
-  document.getElementById('product11').addEventListener('click', () => loadMoreImages(11));
-  document.getElementById('product12').addEventListener('click', () => loadMoreImages(12));
-  // Close modal when clicking outside the modal image
-  window.onclick = function(event) {
-    if (event.target == document.getElementById('modal')) {
-      closeModal();
+      modal.style.display = 'block';
+      modalImg.src = imageSrc;
     }
-  }
+
+    // Function to close the modal
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = 'none';
+    }
+
+    // Function to open the respective Category page
+    function openCategory(categoryId) {
+      window.location.href = 'category' + categoryId + '.html';
+    }
+
+    // Function to open the "Print Pic on Pillow" page
+    function openPrintPicOnPillow() {
+      window.location.href = 'printpiconpillow.html';
+    }
+
+    // Function to open Instagram
+    function openChat() {
+      window.open('https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9', '_blank');
+    }
   </script>
 </body>
 </html>
