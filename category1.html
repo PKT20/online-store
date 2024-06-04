@@ -21,8 +21,8 @@
       z-index: 1000;
     }
 
-     /* CSS for modal */
-     .modal {
+    /* CSS for modal */
+    .modal {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
       z-index: 1; /* Sit on top */
@@ -81,13 +81,15 @@
       flex-direction: column; /* Stack children vertically */
       align-items: center; /* Center content horizontally */
       border: 0px solid #FFC0CB; /* 2px solid pink border */
+      background-color: #f9f9f9; /* Same as the index page's container color */
     }
 
     .product img {
       width: 100%; /* Ensure image covers full container width */
-      height: 200px; /* Set a fixed height for the images */
-      object-fit: cover; /* Cover the container completely */
+      height: auto; /* Maintain aspect ratio */
+      object-fit: contain; /* Ensure the image is fully visible within the container */
       transition: transform 0.3s ease; /* Smooth transition for hover effect */
+      aspect-ratio: 1 / 1; /* Set aspect ratio */
     }
 
     .product:hover img {
@@ -251,10 +253,10 @@
   <script>
     const products = [
       { name: "Print Pic on Pillow", image: "images/pl/printpiconpillow.jpg" },
-      { name: "Family Pillow", image: "images/pl/familypillow.png" },
-      { name: "Kid Pillow", image: "images/pl/kidpillow.png" },
-      { name: "Couple Pillow", image: "images/pl/couplepillow.png" },
-      { name: "Single Pillow", image: "images/pl/singlepillow.png" },
+      { name: "Family Pillow", image: "images/pl/familypillow.PNG" },
+      { name: "Kid Pillow", image: "images/pl/kidpillow.PNG" },
+      { name: "Couple Pillow", image: "images/pl/couplepillow.PNG" },
+      { name: "Single Pillow", image: "images/pl/singlepillow.PNG" },
       { name: "Graduation Pillow", image: "images/pl/graduationpillow.jpg" },
     ];
 
