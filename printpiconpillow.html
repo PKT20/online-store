@@ -41,7 +41,6 @@
       background-color: #f8f8f8;
     }
 
-    
    /* Additional styles for the modal */
    #modal {
       display: none; /* Hidden by default */
@@ -68,76 +67,77 @@
     }
 
     .close {
-  position: absolute;
-  top: 15px; /* Adjust to align within the modal */
-  right: 20px; /* Adjust to align within the modal */
-  color: rgb(243, 64, 228); /* Modern, muted icon color */
-  font-size: 30px; /* Refined size */
-  font-weight: normal; /* Less emphasis on boldness */
-  padding: 20px; /* Ample padding for easy click */
-  background-color: transparent; /* No background for a clean look */
-  border: none; /* No border for a sleek appearance */
-  border-radius: 50%; /* Rounded for a smooth look */
-  cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition for interaction */
-}
+      position: absolute;
+      top: 15px; /* Adjust to align within the modal */
+      right: 20px; /* Adjust to align within the modal */
+      color: rgb(243, 64, 228); /* Modern, muted icon color */
+      font-size: 30px; /* Refined size */
+      font-weight: normal; /* Less emphasis on boldness */
+      padding: 20px; /* Ample padding for easy click */
+      background-color: transparent; /* No background for a clean look */
+      border: none; /* No border for a sleek appearance */
+      border-radius: 50%; /* Rounded for a smooth look */
+      cursor: pointer;
+      transition: all 0.3s ease; /* Smooth transition for interaction */
+    }
 
-.close:hover,
-.close:focus {
-  color: #000; /* Darker color for interaction */
-  background-color: #e0e0e0; /* Subtle background color change on hover/focus */
-  transform: rotate(90deg); /* Rotate for a dynamic effect */
-}
+    .close:hover,
+    .close:focus {
+      color: #000; /* Darker color for interaction */
+      background-color: #e0e0e0; /* Subtle background color change on hover/focus */
+      transform: rotate(90deg); /* Rotate for a dynamic effect */
+    }
 
     .container {
-  padding: 10px; /* Padding for the outside of the container */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: 5px; /* This will create space between the items */
-}
+      padding: 10px; /* Padding for the outside of the container */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; /* This will create space between the items */
+    }
 
-.product {
-      width: calc(50% - 20px); /* Adjusted width to fit three items per row with spacing */
-      height: 99px; /* Set a fixed height */
-      padding: 1px;
-      margin: 5px; /* Increased margin for more space between containers */
+    .product {
+      width: calc(30% - 20px); /* Adjusted width to fit three items per row with spacing */
+      height: 300px; /* Set a larger fixed height */
+      padding: 10px;
+      margin: 15px; /* Increased margin for more space between containers */
       border: 2px solid #f8c1ea;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       cursor: pointer; /* Add cursor pointer for product */
       transition: all 0.3s ease, box-shadow 0.5s ease;
-      max-width: 100px;
     }
-    .product img {
-  width: 100%; /* Ensures the image width is the same as the container's */
-  height: 100%; /* Ensures the image height is the same as the container's */
-  object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
-  border-radius: 8px; /* Optional: Matches the container's border-radius */
-  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
-}
 
+    .product img {
+      width: 100%; /* Ensures the image width is the same as the container's */
+      height: 100%; /* Ensures the image height is the same as the container's */
+      object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
+      border-radius: 8px; /* Optional: Matches the container's border-radius */
+      background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
+    }
 
     .product:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
     }
+
     @media only screen and (max-width: 600px) {
       .product {
         width: calc(50% - 20px); /* Two items per row on mobile */
-        margin: 5px; /* Increased margin for more space between containers */
+        margin: 10px; /* Increased margin for more space between containers */
       }
     }
-    .arrow {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 35px;
-  color: rgb(243, 61, 228);
-  z-index: 1010; /* Ensure arrows are above the image */
-}
 
-.arrow.left {
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 35px;
+      color: rgb(243, 61, 228);
+      z-index: 1010; /* Ensure arrows are above the image */
+    }
+
+    .arrow.left {
       left: 20px;
     }
 
@@ -145,10 +145,8 @@
       right: 20px;
     }
 
-    
     .step-container {
       text-align: center;
-    
       justify-content: space-between;
       background: linear-gradient(135deg, #fad4e485, #fad4e485);
       padding: 15px;
@@ -202,15 +200,15 @@
     <div class="product" id="product11">
       <img src="images/pa/pa17.JPG" alt="Initial Product 11">
     </div>
-        <div class="product" id="product9">
+    <div class="product" id="product9">
       <img src="images/pa/pa34.JPG" alt="Initial Product 9">
     </div>
     <div class="product" id="product10">
       <img src="images/pa/pa41.JPG" alt="Initial Product 10">
-    </div><div class="product" id="product8">
+    </div>
+    <div class="product" id="product8">
       <img src="images/pa/pa36.JPG" alt="Initial Product 8">
     </div>
-    
     <div class="product" id="product12">
       <img src="images/pa/pa5.JPG" alt="Initial Product 12">
     </div>
@@ -221,163 +219,170 @@
     <span class="arrow left" onclick="showPrevImage()">&#10094;</span> <!-- Left arrow -->
     <img id="modal-img" class="modal-content">
     <span class="arrow right" onclick="showNextImage()">&#10095;</span> <!-- Right arrow -->
-</div>
-
+  </div>
 
   <script>
     let currentIndex = 0; // Global index to track the current image
-  let currentImages = []; // Holds the images for the current product
+    let currentImages = []; // Holds the images for the current product
 
-  function loadMoreImages(containerId) {
-  let moreImagesProduct1 = [
-    'images/pa/pa1.JPG', 
-    'images/pa/pa2.JPG', 
-    'images/pa/pa3.JPG',
-    'images/pa/pa4.JPG'
-  ];
+    function loadMoreImages(containerId) {
+      let moreImagesProduct1 = [
+        'images/pa/pa1.JPG', 
+        'images/pa/pa2.JPG', 
+        'images/pa/pa3.JPG',
+        'images/pa/pa4.JPG'
+      ];
 
-  let moreImagesProduct2 = [
-    'images/pa/pa8.JPG', 
-    'images/pa/pa7.JPG', 
-    'images/pa/pa9.JPG',
-    'images/pa/pa10.JPG',
-    'images/pa/pa47.JPG'
-  ];
+      let moreImagesProduct2 = [
+        'images/pa/pa8.JPG', 
+        'images/pa/pa7.JPG', 
+        'images/pa/pa9.JPG',
+        'images/pa/pa10.JPG',
+        'images/pa/pa47.JPG'
+      ];
 
-  let moreImagesProduct3 = [
-    'images/pa/pa12.JPG', 
-    'images/pa/pa13.JPG', 
-    'images/pa/pa14.JPG',
-    'images/pa/pa15.JPG'
-  ];
-  let moreImagesProduct4 = [
-    'images/pa/pa19.JPG', 
-    'images/pa/pa20.JPG', 
-    'images/pa/pa21.JPG',
-    'images/pa/pa22.JPG'
-  ];
-  let moreImagesProduct5 = [
-    'images/pa/pa42.PNG',
-    'images/pa/pa23.JPG', 
-    'images/pa/pa24.JPG', 
-    'images/pa/pa25.JPG'
-  ];
-  let moreImagesProduct6 = [
-    'images/pa/pa26.JPG', 
-    'images/pa/pa27.JPG', 
-    'images/pa/pa28.JPG', 
-    'images/pa/pa29.JPG',
-    'images/pa/pa30.JPG'
-  ];
-  let moreImagesProduct7 = [
-    'images/pa/pa31.JPG', 
-    'images/pa/pa32.JPG', 
-    'images/pa/pa33.JPG'
-     ];
+      let moreImagesProduct3 = [
+        'images/pa/pa12.JPG', 
+        'images/pa/pa13.JPG', 
+        'images/pa/pa14.JPG',
+        'images/pa/pa15.JPG'
+      ];
 
-  let moreImagesProduct8 = [
-    'images/pa/pa36.JPG', 
-    'images/pa/pa35.JPG', 
-    'images/pa/pa37.JPG',
-    'images/pa/pa38.JPG'
-  ];
+      let moreImagesProduct4 = [
+        'images/pa/pa19.JPG', 
+        'images/pa/pa20.JPG', 
+        'images/pa/pa21.JPG',
+        'images/pa/pa22.JPG'
+      ];
 
-  let moreImagesProduct9 = [
-    'images/pa/pa34.JPG', 
-    'images/pa/pa43.JPG', 
-    'images/pa/pa44.PNG',
-    'images/pa/pa45.PNG',
-    'images/pa/pa46.PNG'
-  ];
-  let moreImagesProduct10 = [
-    'images/pa/pa41.JPG', 
-    'images/pa/pa39.JPG', 
-    'images/pa/pa40.JPG'
-  ];
-  let moreImagesProduct11 = [
-  'images/pa/pa17.JPG', 
-  'images/pa/pa18.JPG'
-  ];
-  let moreImagesProduct12 = [
-  'images/pa/pa5.JPG', 
-  'images/pa/pa6.JPG'
-  ];
+      let moreImagesProduct5 = [
+        'images/pa/pa42.PNG',
+        'images/pa/pa23.JPG', 
+        'images/pa/pa24.JPG', 
+        'images/pa/pa25.JPG'
+      ];
 
-  // Determine which set of images to use
-  if (containerId === 1) {
-    currentImages = moreImagesProduct1;
-  } else if (containerId === 2) {
-    currentImages = moreImagesProduct2;
-  } else if (containerId === 3) {
-    currentImages = moreImagesProduct3;
-  } else if (containerId === 4) {
-    currentImages = moreImagesProduct4;
-  } else if (containerId === 5) {
-    currentImages = moreImagesProduct5;
-  } else if (containerId === 6) {
-    currentImages = moreImagesProduct6;
-  } else if (containerId === 7) {
-    currentImages = moreImagesProduct7;
-  } else if (containerId === 8) {
-    currentImages = moreImagesProduct8;
-  } else if (containerId === 9) {
-    currentImages = moreImagesProduct9;
-  } else if (containerId === 10) {
-    currentImages = moreImagesProduct10;
-  } else if (containerId === 11) {
-    currentImages = moreImagesProduct11;
-  } else if (containerId === 12) {
-    currentImages = moreImagesProduct12;
-  }
+      let moreImagesProduct6 = [
+        'images/pa/pa26.JPG', 
+        'images/pa/pa27.JPG', 
+        'images/pa/pa28.JPG', 
+        'images/pa/pa29.JPG',
+        'images/pa/pa30.JPG'
+      ];
 
-    // Display the first image of the set in the modal
-    const modalImg = document.getElementById('modal-img');
-    modalImg.src = currentImages[currentIndex];
+      let moreImagesProduct7 = [
+        'images/pa/pa31.JPG', 
+        'images/pa/pa32.JPG', 
+        'images/pa/pa33.JPG'
+      ];
 
-    // Show the modal
-    const modal = document.getElementById('modal');
-    modal.style.display = "block";
-  }
+      let moreImagesProduct8 = [
+        'images/pa/pa36.JPG', 
+        'images/pa/pa35.JPG', 
+        'images/pa/pa37.JPG',
+        'images/pa/pa38.JPG'
+      ];
 
-  function closeModal() {
-    const modal = document.getElementById('modal');
-    modal.style.display = "none";
-  }
+      let moreImagesProduct9 = [
+        'images/pa/pa34.JPG', 
+        'images/pa/pa43.JPG', 
+        'images/pa/pa44.PNG',
+        'images/pa/pa45.PNG',
+        'images/pa/pa46.PNG'
+      ];
 
-  function showNextImage() {
-    currentIndex = (currentIndex + 1) % currentImages.length; // Move to the next image
-    updateModalImage();
-  }
+      let moreImagesProduct10 = [
+        'images/pa/pa41.JPG', 
+        'images/pa/pa39.JPG', 
+        'images/pa/pa40.JPG'
+      ];
 
-  function showPrevImage() {
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; // Move to the previous image
-    updateModalImage();
-  }
+      let moreImagesProduct11 = [
+        'images/pa/pa17.JPG', 
+        'images/pa/pa18.JPG'
+      ];
 
-  function updateModalImage() {
-    const modalImg = document.getElementById('modal-img');
-    modalImg.src = currentImages[currentIndex];
-  }
+      let moreImagesProduct12 = [
+        'images/pa/pa5.JPG', 
+        'images/pa/pa6.JPG'
+      ];
 
-  // Event listeners
-  document.getElementById('product1').addEventListener('click', () => loadMoreImages(1));
-  document.getElementById('product2').addEventListener('click', () => loadMoreImages(2));
-  document.getElementById('product3').addEventListener('click', () => loadMoreImages(3));
-  document.getElementById('product4').addEventListener('click', () => loadMoreImages(4));
-  document.getElementById('product5').addEventListener('click', () => loadMoreImages(5));
-  document.getElementById('product6').addEventListener('click', () => loadMoreImages(6));
-  document.getElementById('product7').addEventListener('click', () => loadMoreImages(7));
-  document.getElementById('product8').addEventListener('click', () => loadMoreImages(8));
-  document.getElementById('product9').addEventListener('click', () => loadMoreImages(9));
-  document.getElementById('product10').addEventListener('click', () => loadMoreImages(10));
-  document.getElementById('product11').addEventListener('click', () => loadMoreImages(11));
-  document.getElementById('product12').addEventListener('click', () => loadMoreImages(12));
-  // Close modal when clicking outside the modal image
-  window.onclick = function(event) {
-    if (event.target == document.getElementById('modal')) {
-      closeModal();
+      // Determine which set of images to use
+      if (containerId === 1) {
+        currentImages = moreImagesProduct1;
+      } else if (containerId === 2) {
+        currentImages = moreImagesProduct2;
+      } else if (containerId === 3) {
+        currentImages = moreImagesProduct3;
+      } else if (containerId === 4) {
+        currentImages = moreImagesProduct4;
+      } else if (containerId === 5) {
+        currentImages = moreImagesProduct5;
+      } else if (containerId === 6) {
+        currentImages = moreImagesProduct6;
+      } else if (containerId === 7) {
+        currentImages = moreImagesProduct7;
+      } else if (containerId === 8) {
+        currentImages = moreImagesProduct8;
+      } else if (containerId === 9) {
+        currentImages = moreImagesProduct9;
+      } else if (containerId === 10) {
+        currentImages = moreImagesProduct10;
+      } else if (containerId === 11) {
+        currentImages = moreImagesProduct11;
+      } else if (containerId === 12) {
+        currentImages = moreImagesProduct12;
+      }
+
+      // Display the first image of the set in the modal
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = currentImages[currentIndex];
+
+      // Show the modal
+      const modal = document.getElementById('modal');
+      modal.style.display = "block";
     }
-  }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = "none";
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % currentImages.length; // Move to the next image
+      updateModalImage();
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; // Move to the previous image
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = currentImages[currentIndex];
+    }
+
+    // Event listeners
+    document.getElementById('product1').addEventListener('click', () => loadMoreImages(1));
+    document.getElementById('product2').addEventListener('click', () => loadMoreImages(2));
+    document.getElementById('product3').addEventListener('click', () => loadMoreImages(3));
+    document.getElementById('product4').addEventListener('click', () => loadMoreImages(4));
+    document.getElementById('product5').addEventListener('click', () => loadMoreImages(5));
+    document.getElementById('product6').addEventListener('click', () => loadMoreImages(6));
+    document.getElementById('product7').addEventListener('click', () => loadMoreImages(7));
+    document.getElementById('product8').addEventListener('click', () => loadMoreImages(8));
+    document.getElementById('product9').addEventListener('click', () => loadMoreImages(9));
+    document.getElementById('product10').addEventListener('click', () => loadMoreImages(10));
+    document.getElementById('product11').addEventListener('click', () => loadMoreImages(11));
+    document.getElementById('product12').addEventListener('click', () => loadMoreImages(12));
+
+    // Close modal when clicking outside the modal image
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('modal')) {
+        closeModal();
+      }
+    }
   </script>
 </body>
 </html>
