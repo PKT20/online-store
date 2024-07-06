@@ -99,7 +99,7 @@
 .product {
   width: calc(30% - 20px);
     height: 99px; /* Set a fixed height */
-      padding: 1px;
+      padding: 5px;
       border: 2px solid #f8c1ea;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -171,7 +171,7 @@
   </style>
 </head>
 <body>
-  <a href="category1.html" class="back-button">Back</a>
+  <a href="index.html" class="back-button">Back</a>
 
   <header>
     <h1>Print Pic on Pillow</h1>
@@ -181,171 +181,92 @@
     Please choose your favorite design here and kindly direct message to us on <a href="https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9" target="_blank">Instagram</a>.
   </div>
 
-
   <div class="container" id="product-list">
     <div class="product" id="product1">
-      <img src="images/pa/pa1.JPG" alt="Initial Product 1">
+      <img src="images/pop/pop1.JPG" alt="Initial Product 1">
     </div>
     <div class="product" id="product2">
-      <img src="images/pa/pa8.JPG" alt="Initial Product 2">
+      <img src="images/pop/pop2.PNG" alt="Initial Product 2">
     </div>
     <div class="product" id="product3">
-      <img src="images/pa/pa12.JPG" alt="Initial Product 3">
-    </div>
-    <div class="product" id="product7">
-      <img src="images/pa/pa31.JPG" alt="Initial Product 7">
-    </div>
-    <div class="product" id="product5">
-      <img src="images/pa/pa42.PNG" alt="Initial Product 5">
-    </div>
-    <div class="product" id="product6">
-      <img src="images/pa/pa26.JPG" alt="Initial Product 6">
+      <img src="images/pop/pop3.JPG" alt="Initial Product 3">
     </div>
     <div class="product" id="product4">
-      <img src="images/pa/pa19.JPG" alt="Initial Product 4">
+      <img src="images/pop/pop4.JPG" alt="Initial Product 4">
     </div>
-    <div class="product" id="product11">
-      <img src="images/pa/pa17.JPG" alt="Initial Product 11">
+    <div class="product" id="product5">
+      <img src="images/pop/pop5.JPG" alt="Initial Product 5">
     </div>
-    <div class="product" id="product9">
-      <img src="images/pa/pa34.JPG" alt="Initial Product 9">
+    <div class="product" id="product6">
+      <img src="images/pop/pop6.JPG" alt="Initial Product 6">
     </div>
-    <div class="product" id="product10">
-      <img src="images/pa/pa41.JPG" alt="Initial Product 10">
+    <div class="product" id="product7">
+      <img src="images/pop/pop7.JPG" alt="Initial Product 7">
     </div>
     <div class="product" id="product8">
-      <img src="images/pa/pa36.JPG" alt="Initial Product 8">
+      <img src="images/pop/pop8.JPG" alt="Initial Product 8">
+    </div>
+    <div class="product" id="product9">
+      <img src="images/pop/pop9.JPG" alt="Initial Product 9">
+    </div>
+    <div class="product" id="product10">
+      <img src="images/pop/pop10.PNG" alt="Initial Product 10">
+    </div>
+    <div class="product" id="product11">
+      <img src="images/pop/pop11.PNG" alt="Initial Product 11">
     </div>
     <div class="product" id="product12">
-      <img src="images/pa/pa5.JPG" alt="Initial Product 12">
+      <img src="images/pop/pop12.PNG" alt="Initial Product 12">
+    </div>
+    <div class="product" id="product13">
+      <img src="images/pop/pop13.PNG" alt="Initial Product 13">
+    </div>
+    <div class="product" id="product14">
+      <img src="images/pop/pop14.PNG" alt="Initial Product 14">
+    </div>
+    <div class="product" id="product15">
+      <img src="images/pop/pop15.PNG" alt="Initial Product 15">
+    </div>
+    <div class="product" id="product16">
+      <img src="images/pop/pop16.JPG" alt="Initial Product 16">
     </div>
   </div>
 
   <div id="modal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
-    <span class="arrow left" onclick="showPrevImage()">&#10094;</span> <!-- Left arrow -->
+    <span class="arrow left" onclick="showPrevImage()">&#10094;</span>
     <img id="modal-img" class="modal-content">
-    <span class="arrow right" onclick="showNextImage()">&#10095;</span> <!-- Right arrow -->
+    <span class="arrow right" onclick="showNextImage()">&#10095;</span>
   </div>
 
   <script>
     let currentIndex = 0; // Global index to track the current image
     let currentImages = []; // Holds the images for the current product
 
-    function loadMoreImages(containerId) {
-      let moreImagesProduct1 = [
-        'images/pa/pa1.JPG', 
-        'images/pa/pa2.JPG', 
-        'images/pa/pa3.JPG',
-        'images/pa/pa4.JPG'
-      ];
+    const productImages = [
+      'images/pop/pop1.JPG',
+      'images/pop/pop2.PNG',
+      'images/pop/pop3.JPG',
+      'images/pop/pop4.JPG',
+      'images/pop/pop5.JPG',
+      'images/pop/pop6.JPG',
+      'images/pop/pop7.JPG',
+      'images/pop/pop8.JPG',
+      'images/pop/pop9.JPG',
+      'images/pop/pop10.PNG',
+      'images/pop/pop11.PNG',
+      'images/pop/pop12.PNG',
+      'images/pop/pop13.PNG',
+      'images/pop/pop14.PNG',
+      'images/pop/pop15.PNG',
+      'images/pop/pop16.JPG'
+    ];
 
-      let moreImagesProduct2 = [
-        'images/pa/pa8.JPG', 
-        'images/pa/pa7.JPG', 
-        'images/pa/pa9.JPG',
-        'images/pa/pa10.JPG',
-        'images/pa/pa47.JPG'
-      ];
-
-      let moreImagesProduct3 = [
-        'images/pa/pa12.JPG', 
-        'images/pa/pa13.JPG', 
-        'images/pa/pa14.JPG',
-        'images/pa/pa15.JPG'
-      ];
-
-      let moreImagesProduct4 = [
-        'images/pa/pa19.JPG', 
-        'images/pa/pa20.JPG', 
-        'images/pa/pa21.JPG',
-        'images/pa/pa22.JPG'
-      ];
-
-      let moreImagesProduct5 = [
-        'images/pa/pa42.PNG',
-        'images/pa/pa23.JPG', 
-        'images/pa/pa24.JPG', 
-        'images/pa/pa25.JPG'
-      ];
-
-      let moreImagesProduct6 = [
-        'images/pa/pa26.JPG', 
-        'images/pa/pa27.JPG', 
-        'images/pa/pa28.JPG', 
-        'images/pa/pa29.JPG',
-        'images/pa/pa30.JPG'
-      ];
-
-      let moreImagesProduct7 = [
-        'images/pa/pa31.JPG', 
-        'images/pa/pa32.JPG', 
-        'images/pa/pa33.JPG'
-      ];
-
-      let moreImagesProduct8 = [
-        'images/pa/pa36.JPG', 
-        'images/pa/pa35.JPG', 
-        'images/pa/pa37.JPG',
-        'images/pa/pa38.JPG'
-      ];
-
-      let moreImagesProduct9 = [
-        'images/pa/pa34.JPG', 
-        'images/pa/pa43.JPG', 
-        'images/pa/pa44.PNG',
-        'images/pa/pa45.PNG',
-        'images/pa/pa46.PNG'
-      ];
-
-      let moreImagesProduct10 = [
-        'images/pa/pa41.JPG', 
-        'images/pa/pa39.JPG', 
-        'images/pa/pa40.JPG'
-      ];
-
-      let moreImagesProduct11 = [
-        'images/pa/pa17.JPG', 
-        'images/pa/pa18.JPG'
-      ];
-
-      let moreImagesProduct12 = [
-        'images/pa/pa5.JPG', 
-        'images/pa/pa6.JPG'
-      ];
-
-      // Determine which set of images to use
-      if (containerId === 1) {
-        currentImages = moreImagesProduct1;
-      } else if (containerId === 2) {
-        currentImages = moreImagesProduct2;
-      } else if (containerId === 3) {
-        currentImages = moreImagesProduct3;
-      } else if (containerId === 4) {
-        currentImages = moreImagesProduct4;
-      } else if (containerId === 5) {
-        currentImages = moreImagesProduct5;
-      } else if (containerId === 6) {
-        currentImages = moreImagesProduct6;
-      } else if (containerId === 7) {
-        currentImages = moreImagesProduct7;
-      } else if (containerId === 8) {
-        currentImages = moreImagesProduct8;
-      } else if (containerId === 9) {
-        currentImages = moreImagesProduct9;
-      } else if (containerId === 10) {
-        currentImages = moreImagesProduct10;
-      } else if (containerId === 11) {
-        currentImages = moreImagesProduct11;
-      } else if (containerId === 12) {
-        currentImages = moreImagesProduct12;
-      }
-
-      // Display the first image of the set in the modal
+    function openModal(index) {
+      currentIndex = index;
+      currentImages = productImages;
       const modalImg = document.getElementById('modal-img');
       modalImg.src = currentImages[currentIndex];
-
-      // Show the modal
       const modal = document.getElementById('modal');
       modal.style.display = "block";
     }
@@ -356,12 +277,12 @@
     }
 
     function showNextImage() {
-      currentIndex = (currentIndex + 1) % currentImages.length; // Move to the next image
+      currentIndex = (currentIndex + 1) % currentImages.length;
       updateModalImage();
     }
 
     function showPrevImage() {
-      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; // Move to the previous image
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
       updateModalImage();
     }
 
@@ -371,20 +292,23 @@
     }
 
     // Event listeners
-    document.getElementById('product1').addEventListener('click', () => loadMoreImages(1));
-    document.getElementById('product2').addEventListener('click', () => loadMoreImages(2));
-    document.getElementById('product3').addEventListener('click', () => loadMoreImages(3));
-    document.getElementById('product4').addEventListener('click', () => loadMoreImages(4));
-    document.getElementById('product5').addEventListener('click', () => loadMoreImages(5));
-    document.getElementById('product6').addEventListener('click', () => loadMoreImages(6));
-    document.getElementById('product7').addEventListener('click', () => loadMoreImages(7));
-    document.getElementById('product8').addEventListener('click', () => loadMoreImages(8));
-    document.getElementById('product9').addEventListener('click', () => loadMoreImages(9));
-    document.getElementById('product10').addEventListener('click', () => loadMoreImages(10));
-    document.getElementById('product11').addEventListener('click', () => loadMoreImages(11));
-    document.getElementById('product12').addEventListener('click', () => loadMoreImages(12));
+    document.getElementById('product1').addEventListener('click', () => openModal(0));
+    document.getElementById('product2').addEventListener('click', () => openModal(1));
+    document.getElementById('product3').addEventListener('click', () => openModal(2));
+    document.getElementById('product4').addEventListener('click', () => openModal(3));
+    document.getElementById('product5').addEventListener('click', () => openModal(4));
+    document.getElementById('product6').addEventListener('click', () => openModal(5));
+    document.getElementById('product7').addEventListener('click', () => openModal(6));
+    document.getElementById('product8').addEventListener('click', () => openModal(7));
+    document.getElementById('product9').addEventListener('click', () => openModal(8));
+    document.getElementById('product10').addEventListener('click', () => openModal(9));
+    document.getElementById('product11').addEventListener('click', () => openModal(10));
+    document.getElementById('product12').addEventListener('click', () => openModal(11));
+    document.getElementById('product13').addEventListener('click', () => openModal(12));
+    document.getElementById('product14').addEventListener('click', () => openModal(13));
+    document.getElementById('product15').addEventListener('click', () => openModal(14));
+    document.getElementById('product16').addEventListener('click', () => openModal(15));
 
-    // Close modal when clicking outside the modal image
     window.onclick = function(event) {
       if (event.target == document.getElementById('modal')) {
         closeModal();
