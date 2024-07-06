@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrintPiconPillow</title>
+  <style>
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(252, 185, 243, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Arial', sans-serif;
+      text-decoration: none;
+      color: #000;
+    }
+
+    header {
+      background-image: url('images/giftbg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #000000;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      color: #000;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    #modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Full-screen */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    }
+
+    #modal-img {
+      margin: auto;
+      display: block; /* Block display to allow use of margin auto */
+      width: 80%; /* Width of the image */
+      max-width: 700px; /* Maximum width */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px; /* Adjust to align within the modal */
+      right: 20px; /* Adjust to align within the modal */
+      color: rgb(243, 64, 228); /* Modern, muted icon color */
+      font-size: 30px; /* Refined size */
+      font-weight: normal; /* Less emphasis on boldness */
+      padding: 20px; /* Ample padding for easy click */
+      background-color: transparent; /* No background for a clean look */
+      border: none; /* No border for a sleek appearance */
+      border-radius: 50%; /* Rounded for a smooth look */
+      cursor: pointer;
+      transition: all 0.3s ease; /* Smooth transition for interaction */
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000; /* Darker color for interaction */
+      background-color: #e0e0e0; /* Subtle background color change on hover/focus */
+      transform: rotate(90deg); /* Rotate for a dynamic effect */
+    }
+
+    .container {
+      padding: 10px; /* Padding for the outside of the container */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; /* This will create space between the items */
+    }
+
+    .product {
+      width: calc(30% - 20px);
+      height: 99px; /* Set a fixed height */
+      padding: 2px;
+      border: 2px solid #f8c1ea;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer; /* Add cursor pointer for product */
+      transition: all 0.3s ease, box-shadow 0.5s ease;
+      max-width: 100px;
+    }
+
+    .product img {
+      width: 100%; /* Ensures the image width is the same as the container's */
+      height: 100%; /* Ensures the image height is the same as the container's */
+      object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
+      border-radius: 8px; /* Optional: Matches the container's border-radius */
+      background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
+    }
+
+    @media only screen and (max-width: 600px) {
+      .container {
+        padding: 25px; /* Adjusted padding */
+      }
+      .product {
+        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
+      }
+    }
+
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 35px;
+      color: rgb(243, 61, 228);
+      z-index: 1010; /* Ensure arrows are above the image */
+    }
+
+    .arrow.left {
+      left: 20px;
+    }
+
+    .arrow.right {
+      right: 20px;
+    }
+
+    .top-message {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 15px;
+      background-color: #fad4e485;
+      color: #333;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .top-message a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .top-message a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <a href="category1.html" class="back-button">Back</a>
+
+  <header>
+    <h1>Family Photo</h1>
+  </header>
+
+  <div class="top-message">
+    Please choose your favorite design here and kindly direct message to us on <a href="https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9" target="_blank">Instagram</a>.
+  </div>
+
+  <div class="container" id="product-list">
+    <div class="product" id="product1">
+      <img src="images/fp/fp1.PNG" alt="Product 1">
+    </div>
+    <div class="product" id="product2">
+      <img src="images/fp/fp2.PNG" alt="Product 2">
+    </div>
+    <div class="product" id="product3">
+      <img src="images/fp/fp3.PNG" alt="Product 3">
+    </div>
+    <div class="product" id="product4">
+      <img src="images/fp/fp4.PNG" alt="Product 4">
+    </div>
+    <div class="product" id="product5">
+      <img src="images/fp/fp5.PNG" alt="Product 5">
+    </div>
+    <div class="product" id="product6">
+      <img src="images/fp/fp6.PNG" alt="Product 6">
+    </div>
+    <div class="product" id="product7">
+      <img src="images/fp/fp7.PNG" alt="Product 7">
+    </div>
+    <div class="product" id="product8">
+      <img src="images/fp/fp8.PNG" alt="Product 8">
+    </div>
+    <div class="product" id="product9">
+      <img src="images/fp/fp9.PNG" alt="Product 9">
+    </div>
+    <div class="product" id="product10">
+      <img src="images/fp/fp10.PNG" alt="Product 10">
+    </div>
+    <div class="product" id="product11">
+      <img src="images/fp/fp11.PNG" alt="Product 11">
+    </div>
+    <div class="product" id="product12">
+      <img src="images/fp/fp12.PNG" alt="Product 12">
+    </div>
+    <div class="product" id="product13">
+      <img src="images/fp/fp13.PNG" alt="Product 13">
+    </div>
+    <div class="product" id="product14">
+      <img src="images/fp/fp14.PNG" alt="Product 14">
+    </div>
+    <div class="product" id="product15">
+      <img src="images/fp/fp15.PNG" alt="Product 15">
+    </div>
+    <div class="product" id="product16">
+      <img src="images/fp/fp16.PNG" alt="Product 16">
+    </div>
+    <div class="product" id="product17">
+      <img src="images/fp/fp17.PNG" alt="Product 17">
+    </div>
+    <div class="product" id="product18">
+      <img src="images/fp/fp18.PNG" alt="Product 18">
+    </div>
+    <div class="product" id="product19">
+      <img src="images/fp/fp19.PNG" alt="Product 19">
+    </div>
+    <div class="product" id="product20">
+      <img src="images/fp/fp20.PNG" alt="Product 20">
+    </div>
+    <div class="product" id="product21">
+      <img src="images/fp/fp21.PNG" alt="Product 21">
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <span class="arrow left" onclick="showPrevImage()">&#10094;</span>
+    <img id="modal-img" class="modal-content">
+    <span class="arrow right" onclick="showNextImage()">&#10095;</span>
+  </div>
+
+  <script>
+    let currentIndex = 0; // Global index to track the current image
+    let currentImages = []; // Holds the images for the current product
+
+    const productImages = [
+      'images/fp/fp1.PNG',
+      'images/fp/fp2.PNG',
+      'images/fp/fp3.PNG',
+      'images/fp/fp4.PNG',
+      'images/fp/fp5.PNG',
+      'images/fp/fp6.PNG',
+      'images/fp/fp7.PNG',
+      'images/fp/fp8.PNG',
+      'images/fp/fp9.PNG',
+      'images/fp/fp10.PNG',
+      'images/fp/fp11.PNG',
+      'images/fp/fp12.PNG',
+      'images/fp/fp13.PNG',
+      'images/fp/fp14.PNG',
+      'images/fp/fp15.PNG',
+      'images/fp/fp16.PNG',
+      'images/fp/fp17.PNG',
+      'images/fp/fp18.PNG',
+      'images/fp/fp19.PNG',
+      'images/fp/fp20.PNG',
+      'images/fp/fp21.PNG'
+    ];
+
+    function openModal(index) {
+      currentIndex = index;
+      currentImages = productImages;
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = currentImages[currentIndex];
+      const modal = document.getElementById('modal');
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = "none";
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      updateModalImage();
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = currentImages[currentIndex];
+    }
+
+    // Event listeners
+    document.getElementById('product1').addEventListener('click', () => openModal(0));
+    document.getElementById('product2').addEventListener('click', () => openModal(1));
+    document.getElementById('product3').addEventListener('click', () => openModal(2));
+    document.getElementById('product4').addEventListener('click', () => openModal(3));
+    document.getElementById('product5').addEventListener('click', () => openModal(4));
+    document.getElementById('product6').addEventListener('click', () => openModal(5));
+    document.getElementById('product7').addEventListener('click', () => openModal(6));
+    document.getElementById('product8').addEventListener('click', () => openModal(7));
+    document.getElementById('product9').addEventListener('click', () => openModal(8));
+    document.getElementById('product10').addEventListener('click', () => openModal(9));
+    document.getElementById('product11').addEventListener('click', () => openModal(10));
+    document.getElementById('product12').addEventListener('click', () => openModal(11));
+    document.getElementById('product13').addEventListener('click', () => openModal(12));
+    document.getElementById('product14').addEventListener('click', () => openModal(13));
+    document.getElementById('product15').addEventListener('click', () => openModal(14));
+    document.getElementById('product16').addEventListener('click', () => openModal(15));
+    document.getElementById('product17').addEventListener('click', () => openModal(16));
+    document.getElementById('product18').addEventListener('click', () => openModal(17));
+    document.getElementById('product19').addEventListener('click', () => openModal(18));
+    document.getElementById('product20').addEventListener('click', () => openModal(19));
+    document.getElementById('product21').addEventListener('click', () => openModal(20));
+
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('modal')) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
