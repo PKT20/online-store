@@ -41,6 +41,7 @@
       background-color: #f8f8f8;
     }
 
+    
    /* Additional styles for the modal */
    #modal {
       display: none; /* Hidden by default */
@@ -67,80 +68,78 @@
     }
 
     .close {
-      position: absolute;
-      top: 15px; /* Adjust to align within the modal */
-      right: 20px; /* Adjust to align within the modal */
-      color: rgb(243, 64, 228); /* Modern, muted icon color */
-      font-size: 30px; /* Refined size */
-      font-weight: normal; /* Less emphasis on boldness */
-      padding: 20px; /* Ample padding for easy click */
-      background-color: transparent; /* No background for a clean look */
-      border: none; /* No border for a sleek appearance */
-      border-radius: 50%; /* Rounded for a smooth look */
-      cursor: pointer;
-      transition: all 0.3s ease; /* Smooth transition for interaction */
-    }
+  position: absolute;
+  top: 15px; /* Adjust to align within the modal */
+  right: 20px; /* Adjust to align within the modal */
+  color: rgb(243, 64, 228); /* Modern, muted icon color */
+  font-size: 30px; /* Refined size */
+  font-weight: normal; /* Less emphasis on boldness */
+  padding: 20px; /* Ample padding for easy click */
+  background-color: transparent; /* No background for a clean look */
+  border: none; /* No border for a sleek appearance */
+  border-radius: 50%; /* Rounded for a smooth look */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Smooth transition for interaction */
+}
 
-    .close:hover,
-    .close:focus {
-      color: #000; /* Darker color for interaction */
-      background-color: #e0e0e0; /* Subtle background color change on hover/focus */
-      transform: rotate(90deg); /* Rotate for a dynamic effect */
-    }
+.close:hover,
+.close:focus {
+  color: #000; /* Darker color for interaction */
+  background-color: #e0e0e0; /* Subtle background color change on hover/focus */
+  transform: rotate(90deg); /* Rotate for a dynamic effect */
+}
 
     .container {
-      padding: 10px; /* Padding for the outside of the container */
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between; /* This will create space between the items */
-    }
+  padding: 10px; /* Padding for the outside of the container */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* This will create space between the items */
+}
 
-    .product {
-      width: calc(33.33% - 20px); /* Adjusted width to fit three items per row with spacing */
-      height: 200px; /* Set a larger fixed height */
-      padding: 10px;
-      margin: 10px 0; /* Increased margin for more space between containers */
+.product {
+  width: calc(30% - 20px);
+    height: 99px; /* Set a fixed height */
+      padding: 5px;
       border: 2px solid #f8c1ea;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       cursor: pointer; /* Add cursor pointer for product */
       transition: all 0.3s ease, box-shadow 0.5s ease;
+      max-width: 100px;
     }
-
+   
     .product img {
-      width: 100%; /* Ensures the image width is the same as the container's */
-      height: 100%; /* Ensures the image height is the same as the container's */
-      object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
-      border-radius: 8px; /* Optional: Matches the container's border-radius */
-      background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
-    }
+  width: 100%; /* Ensures the image width is the same as the container's */
+  height: 100%; /* Ensures the image height is the same as the container's */
+  object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
+  border-radius: 8px; /* Optional: Matches the container's border-radius */
+  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
+}
+
 
     .product:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
     }
-    
     @media only screen and (max-width: 600px) {
       .container {
-        padding: 10px; /* Adjusted padding */
+        padding: 25px; /* Adjusted padding */
       }
       .product {
-        width: calc(50% - 10px); /* Adjusted width for 2 products per row with spacing */
-        height: 150px; /* Adjusted height for mobile view */
+        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
       }
     }
-
     .arrow {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 35px;
-      color: rgb(243, 61, 228);
-      z-index: 1010; /* Ensure arrows are above the image */
-    }
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 35px;
+  color: rgb(243, 61, 228);
+  z-index: 1010; /* Ensure arrows are above the image */
+}
 
-    .arrow.left {
+.arrow.left {
       left: 20px;
     }
 
@@ -148,13 +147,17 @@
       right: 20px;
     }
 
-    .step-container {
+    
+    .top-message {
       text-align: center;
-      justify-content: space-between;
-      background: linear-gradient(135deg, #fad4e485, #fad4e485);
-      padding: 15px;
-      font-family: 'Poppins', sans-serif;
-      position: relative;
+      padding: 10px 0;
+      font-size: 15px;
+      background-color: #fad4e485;
+      color: #333;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .top-message a {
