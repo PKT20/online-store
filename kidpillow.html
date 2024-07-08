@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>kidpillow</title>
+  <title>Kid Pillow</title>
   <style>
     .back-button {
       background-color: rgba(252, 185, 243, 0.5);
@@ -182,69 +182,7 @@
   </div>
 
   <div class="container" id="product-list">
-    <div class="product" id="product1">
-      <img src="images/fp/fp1.PNG" alt="Product 1">
-    </div>
-    <div class="product" id="product2">
-      <img src="images/fp/fp2.PNG" alt="Product 2">
-    </div>
-    <div class="product" id="product3">
-      <img src="images/fp/fp3.PNG" alt="Product 3">
-    </div>
-    <div class="product" id="product4">
-      <img src="images/fp/fp4.PNG" alt="Product 4">
-    </div>
-    <div class="product" id="product5">
-      <img src="images/fp/fp5.PNG" alt="Product 5">
-    </div>
-    <div class="product" id="product6">
-      <img src="images/fp/fp6.PNG" alt="Product 6">
-    </div>
-    <div class="product" id="product7">
-      <img src="images/fp/fp7.PNG" alt="Product 7">
-    </div>
-    <div class="product" id="product8">
-      <img src="images/fp/fp8.PNG" alt="Product 8">
-    </div>
-    <div class="product" id="product9">
-      <img src="images/fp/fp9.PNG" alt="Product 9">
-    </div>
-    <div class="product" id="product10">
-      <img src="images/fp/fp10.PNG" alt="Product 10">
-    </div>
-    <div class="product" id="product11">
-      <img src="images/fp/fp11.PNG" alt="Product 11">
-    </div>
-    <div class="product" id="product12">
-      <img src="images/fp/fp12.PNG" alt="Product 12">
-    </div>
-    <div class="product" id="product13">
-      <img src="images/fp/fp13.PNG" alt="Product 13">
-    </div>
-    <div class="product" id="product14">
-      <img src="images/fp/fp14.PNG" alt="Product 14">
-    </div>
-    <div class="product" id="product15">
-      <img src="images/fp/fp15.PNG" alt="Product 15">
-    </div>
-    <div class="product" id="product16">
-      <img src="images/fp/fp16.PNG" alt="Product 16">
-    </div>
-    <div class="product" id="product17">
-      <img src="images/fp/fp17.PNG" alt="Product 17">
-    </div>
-    <div class="product" id="product18">
-      <img src="images/fp/fp18.PNG" alt="Product 18">
-    </div>
-    <div class="product" id="product19">
-      <img src="images/fp/fp19.PNG" alt="Product 19">
-    </div>
-    <div class="product" id="product20">
-      <img src="images/fp/fp20.PNG" alt="Product 20">
-    </div>
-    <div class="product" id="product21">
-      <img src="images/fp/fp21.PNG" alt="Product 21">
-    </div>
+    <!-- JavaScript will populate this section with images -->
   </div>
 
   <div id="modal" class="modal">
@@ -258,29 +196,23 @@
     let currentIndex = 0; // Global index to track the current image
     let currentImages = []; // Holds the images for the current product
 
+    // Images array
     const productImages = [
-      'images/fp/fp1.PNG',
-      'images/fp/fp2.PNG',
-      'images/fp/fp3.PNG',
-      'images/fp/fp4.PNG',
-      'images/fp/fp5.PNG',
-      'images/fp/fp6.PNG',
-      'images/fp/fp7.PNG',
-      'images/fp/fp8.PNG',
-      'images/fp/fp9.PNG',
-      'images/fp/fp10.PNG',
-      'images/fp/fp11.PNG',
-      'images/fp/fp12.PNG',
-      'images/fp/fp13.PNG',
-      'images/fp/fp14.PNG',
-      'images/fp/fp15.PNG',
-      'images/fp/fp16.PNG',
-      'images/fp/fp17.PNG',
-      'images/fp/fp18.PNG',
-      'images/fp/fp19.PNG',
-      'images/fp/fp20.PNG',
-      'images/fp/fp21.PNG'
+      ...Array(105).fill().map((_, i) => `images/kp/${i + 1}.PNG`), // images/kp/1.PNG to images/kp/105.PNG
+      ...Array(9).fill().map((_, i) => `images/kp/${i + 106}.JPG`)  // images/kp/106.JPG to images/kp/114.JPG
     ];
+
+    // Function to create product elements
+    function createProductElements() {
+      const container = document.getElementById('product-list');
+      productImages.forEach((src, index) => {
+        const product = document.createElement('div');
+        product.classList.add('product');
+        product.innerHTML = `<img src="${src}" alt="Product ${index + 1}">`;
+        product.addEventListener('click', () => openModal(index));
+        container.appendChild(product);
+      });
+    }
 
     function openModal(index) {
       currentIndex = index;
@@ -311,31 +243,13 @@
       modalImg.src = currentImages[currentIndex];
     }
 
-    // Event listeners
-    document.getElementById('product1').addEventListener('click', () => openModal(0));
-    document.getElementById('product2').addEventListener('click', () => openModal(1));
-    document.getElementById('product3').addEventListener('click', () => openModal(2));
-    document.getElementById('product4').addEventListener('click', () => openModal(3));
-    document.getElementById('product5').addEventListener('click', () => openModal(4));
-    document.getElementById('product6').addEventListener('click', () => openModal(5));
-    document.getElementById('product7').addEventListener('click', () => openModal(6));
-    document.getElementById('product8').addEventListener('click', () => openModal(7));
-    document.getElementById('product9').addEventListener('click', () => openModal(8));
-    document.getElementById('product10').addEventListener('click', () => openModal(9));
-    document.getElementById('product11').addEventListener('click', () => openModal(10));
-    document.getElementById('product12').addEventListener('click', () => openModal(11));
-    document.getElementById('product13').addEventListener('click', () => openModal(12));
-    document.getElementById('product14').addEventListener('click', () => openModal(13));
-    document.getElementById('product15').addEventListener('click', () => openModal(14));
-    document.getElementById('product16').addEventListener('click', () => openModal(15));
-    document.getElementById('product17').addEventListener('click', () => openModal(16));
-    document.getElementById('product18').addEventListener('click', () => openModal(17));
-    document.getElementById('product19').addEventListener('click', () => openModal(18));
-    document.getElementById('product20').addEventListener('click', () => openModal(19));
-    document.getElementById('product21').addEventListener('click', () => openModal(20));
+    // Populate product list
+    createProductElements();
 
+    // Close modal when clicking outside the modal image
     window.onclick = function(event) {
-      if (event.target == document.getElementById('modal')) {
+      if (event.target == document.getElement
+      .getElementById('modal')) {
         closeModal();
       }
     }
