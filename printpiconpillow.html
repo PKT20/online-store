@@ -6,9 +6,6 @@
   <title>PrintPiconPillow</title>
   <style>
     .back-button {
-      position: fixed;
-      top: 20px;
-      left: 20px;
       background-color: rgba(252, 185, 243, 0.5);
       padding: 10px;
       border-radius: 5px;
@@ -16,6 +13,11 @@
       font-family: 'Arial', sans-serif;
       text-decoration: none;
       color: #000;
+      z-index: 1000;
+      display: inline-block;
+      position: absolute;
+      top: 20px;
+      left: 20px;
     }
 
     header {
@@ -41,9 +43,7 @@
       background-color: #f8f8f8;
     }
 
-    
-   /* Additional styles for the modal */
-   #modal {
+    #modal {
       display: none; /* Hidden by default */
       position: fixed; /* Full-screen */
       z-index: 1000; /* Sit on top */
@@ -68,37 +68,37 @@
     }
 
     .close {
-  position: absolute;
-  top: 15px; /* Adjust to align within the modal */
-  right: 20px; /* Adjust to align within the modal */
-  color: rgb(243, 64, 228); /* Modern, muted icon color */
-  font-size: 30px; /* Refined size */
-  font-weight: normal; /* Less emphasis on boldness */
-  padding: 20px; /* Ample padding for easy click */
-  background-color: transparent; /* No background for a clean look */
-  border: none; /* No border for a sleek appearance */
-  border-radius: 50%; /* Rounded for a smooth look */
-  cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition for interaction */
-}
+      position: absolute;
+      top: 15px; /* Adjust to align within the modal */
+      right: 20px; /* Adjust to align within the modal */
+      color: rgb(243, 64, 228); /* Modern, muted icon color */
+      font-size: 30px; /* Refined size */
+      font-weight: normal; /* Less emphasis on boldness */
+      padding: 20px; /* Ample padding for easy click */
+      background-color: transparent; /* No background for a clean look */
+      border: none; /* No border for a sleek appearance */
+      border-radius: 50%; /* Rounded for a smooth look */
+      cursor: pointer;
+      transition: all 0.3s ease; /* Smooth transition for interaction */
+    }
 
-.close:hover,
-.close:focus {
-  color: #000; /* Darker color for interaction */
-  background-color: #e0e0e0; /* Subtle background color change on hover/focus */
-  transform: rotate(90deg); /* Rotate for a dynamic effect */
-}
+    .close:hover,
+    .close:focus {
+      color: #000; /* Darker color for interaction */
+      background-color: #e0e0e0; /* Subtle background color change on hover/focus */
+      transform: rotate(90deg); /* Rotate for a dynamic effect */
+    }
 
     .container {
-  padding: 10px; /* Padding for the outside of the container */
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* This will create space between the items */
-}
+      padding: 10px; /* Padding for the outside of the container */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; /* This will create space between the items */
+    }
 
-.product {
-  width: calc(30% - 20px);
-    height: 99px; /* Set a fixed height */
+    .product {
+      width: calc(30% - 20px);
+      height: 99px; /* Set a fixed height */
       padding: 2px;
       border: 2px solid #f8c1ea;
       border-radius: 10px;
@@ -107,20 +107,20 @@
       transition: all 0.3s ease, box-shadow 0.5s ease;
       max-width: 100px;
     }
-   
-    .product img {
-  width: 100%; /* Ensures the image width is the same as the container's */
-  height: 100%; /* Ensures the image height is the same as the container's */
-  object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
-  border-radius: 8px; /* Optional: Matches the container's border-radius */
-  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
-}
 
+    .product img {
+      width: 100%; /* Ensures the image width is the same as the container's */
+      height: 100%; /* Ensures the image height is the same as the container's */
+      object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
+      border-radius: 8px; /* Optional: Matches the container's border-radius */
+      background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
+    }
 
     .product:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
     }
+
     @media only screen and (max-width: 600px) {
       .container {
         padding: 25px; /* Adjusted padding */
@@ -129,17 +129,18 @@
         width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
       }
     }
-    .arrow {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 35px;
-  color: rgb(243, 61, 228);
-  z-index: 1010; /* Ensure arrows are above the image */
-}
 
-.arrow.left {
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 35px;
+      color: rgb(243, 61, 228);
+      z-index: 1010; /* Ensure arrows are above the image */
+    }
+
+    .arrow.left {
       left: 20px;
     }
 
@@ -147,7 +148,6 @@
       right: 20px;
     }
 
-    
     .top-message {
       text-align: center;
       padding: 10px 0;
