@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graduation Pillow</title>
+  <style>
+    .back-button {
+      background-color: rgba(252, 185, 243, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Arial', sans-serif;
+      text-decoration: none;
+      color: #000;
+      z-index: 1000;
+      display: inline-block;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    header {
+      background-image: url('images/giftbg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #000000;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      color: #000;
+      margin: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
+    #modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Full-screen */
+      z-index: 1000; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0); /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    }
+
+    #modal-img {
+      margin: auto;
+      display: block; /* Block display to allow use of margin auto */
+      width: 80%; /* Width of the image */
+      max-width: 700px; /* Maximum width */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+
+    .close {
+      position: absolute;
+      top: 15px; /* Adjust to align within the modal */
+      right: 20px; /* Adjust to align within the modal */
+      color: rgb(243, 64, 228); /* Modern, muted icon color */
+      font-size: 30px; /* Refined size */
+      font-weight: normal; /* Less emphasis on boldness */
+      padding: 20px; /* Ample padding for easy click */
+      background-color: transparent; /* No background for a clean look */
+      border: none; /* No border for a sleek appearance */
+      border-radius: 50%; /* Rounded for a smooth look */
+      cursor: pointer;
+      transition: all 0.3s ease; /* Smooth transition for interaction */
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000; /* Darker color for interaction */
+      background-color: #e0e0e0; /* Subtle background color change on hover/focus */
+      transform: rotate(90deg); /* Rotate for a dynamic effect */
+    }
+
+    .container {
+      padding: 10px; /* Padding for the outside of the container */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; /* This will create space between the items */
+    }
+
+    .product {
+      width: calc(30% - 20px);
+      height: 99px; /* Set a fixed height */
+      padding: 2px;
+      border: 2px solid #f8c1ea;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer; /* Add cursor pointer for product */
+      transition: all 0.3s ease, box-shadow 0.5s ease;
+      max-width: 100px;
+    }
+
+    .product img {
+      width: 100%; /* Ensures the image width is the same as the container's */
+      height: 100%; /* Ensures the image height is the same as the container's */
+      object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
+      border-radius: 8px; /* Optional: Matches the container's border-radius */
+      background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
+    }
+
+    @media only screen and (max-width: 600px) {
+      .container {
+        padding: 25px; /* Adjusted padding */
+      }
+      .product {
+        width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
+      }
+    }
+
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 35px;
+      color: rgb(243, 61, 228);
+      z-index: 1010; /* Ensure arrows are above the image */
+    }
+
+    .arrow.left {
+      left: 20px;
+    }
+
+    .arrow.right {
+      right: 20px;
+    }
+
+    .top-message {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 15px;
+      background-color: #fad4e485;
+      color: #333;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .top-message a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .top-message a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <a href="category1.html" class="back-button">Back</a>
+
+  <header>
+    <h1>Graduation Pillow</h1>
+  </header>
+
+  <div class="top-message">
+    Please choose your favorite design here and kindly direct message to us on <a href="https://www.instagram.com/gifturlover?igshid=13fvagbx13fr9" target="_blank">Instagram</a>.
+  </div>
+
+  <div class="container" id="product-list">
+    <!-- JavaScript will populate this section with images -->
+  </div>
+
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <span class="arrow left" onclick="showPrevImage()">&#10094;</span>
+    <img id="modal-img" class="modal-content">
+    <span class="arrow right" onclick="showNextImage()">&#10095;</span>
+  </div>
+
+  <script>
+    let currentIndex = 0; // Global index to track the current image
+    let currentImages = []; // Holds the images for the current product
+
+    // Images array
+    const productImages = [
+      ...Array(13).fill().map((_, i) => `images/gp/${i + 1}.PNG`), // images/gp/1.PNG to images/gp/13.PNG
+      
+    ];
+
+    // Function to create product elements
+    function createProductElements() {
+      const container = document.getElementById('product-list');
+      productImages.forEach((src, index) => {
+        const product = document.createElement('div');
+        product.classList.add('product');
+        product.innerHTML = `<img src="${src}" alt="Product ${index + 1}">`;
+        product.addEventListener('click', () => openModal(index));
+        container.appendChild(product);
+      });
+    }
+
+    function openModal(index) {
+      currentIndex = index;
+      currentImages = productImages;
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = currentImages[currentIndex];
+      const modal = document.getElementById('modal');
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.style.display = "none";
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % currentImages.length;
+      updateModalImage();
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+      updateModalImage();
+    }
+
+    function updateModalImage() {
+      const modalImg = document.getElementById('modal-img');
+      modalImg.src = currentImages[currentIndex];
+    }
+
+    // Populate product list
+    createProductElements();
+
+    // Close modal when clicking outside the modal image
+    window.onclick = function(event) {
+      if (event.target == document.getElementById('modal')) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
