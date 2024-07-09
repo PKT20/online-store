@@ -6,28 +6,28 @@
   <title>Doll Keychain</title>
   
   <style>
-    /* Style for the back button */
     .back-button {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-   
       background-color: rgba(252, 185, 243, 0.5);
       padding: 10px;
-      border-radius: 1px;
+      border-radius: 5px;
       cursor: pointer;
       font-family: 'Arial', sans-serif;
       text-decoration: none;
       color: #000;
+      z-index: 1000;
+      display: inline-block;
+      position: absolute;
+      top: 20px;
+      left: 20px;
     }
-    /* Style for the header */
+
     header {
-      background-image: url('images/giftbg.jpg'); /* Add your background image path here */
-      background-size: cover; /* Cover the entire header */
-      background-position: center; /* Center the background image */
-      color: #000000; /* White header text color */
-      padding: 20px 0; /* Add padding */
-      text-align: center; /* Center align text */
+      background-image: url('images/giftbg.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #000000;
+      padding: 20px 0;
+      text-align: center;
     }
 
     h1 {
@@ -36,20 +36,14 @@
       color: #000;
       margin: 0;
     }
+
     body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f8f8; /* Light gray background */
-}
-    /* Product container */
-    .container {
-        padding: 0; /* Adjusted padding */
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      /* Additional styles for the modal */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+
     #modal {
       display: none; /* Hidden by default */
       position: fixed; /* Full-screen */
@@ -74,45 +68,39 @@
       position: absolute;
     }
 
-    /* Close button */
     .close {
       position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
+      top: 15px; /* Adjust to align within the modal */
+      right: 20px; /* Adjust to align within the modal */
+      color: rgb(243, 64, 228); /* Modern, muted icon color */
+      font-size: 30px; /* Refined size */
+      font-weight: normal; /* Less emphasis on boldness */
+      padding: 20px; /* Ample padding for easy click */
+      background-color: transparent; /* No background for a clean look */
+      border: none; /* No border for a sleek appearance */
+      border-radius: 50%; /* Rounded for a smooth look */
+      cursor: pointer;
+      transition: all 0.3s ease; /* Smooth transition for interaction */
     }
 
     .close:hover,
     .close:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
+      color: #000; /* Darker color for interaction */
+      background-color: #e0e0e0; /* Subtle background color change on hover/focus */
+      transform: rotate(90deg); /* Rotate for a dynamic effect */
     }
 
-    /* Add animation */
-    @keyframes zoom {
-      from {transform: scale(0)} 
-      to {transform: scale(1)}
+    .container {
+      padding: 10px; /* Padding for the outside of the container */
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between; /* This will create space between the items */
     }
-    /* Close button */
-        .close {
-    position: absolute;
-    top: 0%;
-     right: 0px;
-     color: #fdc8e9;
-    font-size: 1px;
-    font-weight: bold;
-    cursor: pointer;
-    }
- 
- /* Style for the image container */
- .product {
-  width: calc(30% - 20px);
-    height: 99px; /* Set a fixed height */
-      padding: 5px;
+
+    .product {
+      width: calc(30% - 20px);
+      height: 99px; /* Set a fixed height */
+      padding: 2px;
       border: 2px solid #f8c1ea;
       border-radius: 10px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -120,68 +108,67 @@
       transition: all 0.3s ease, box-shadow 0.5s ease;
       max-width: 100px;
     }
-   
-    .product img {
-  width: 100%; /* Ensures the image width is the same as the container's */
-  height: 100%; /* Ensures the image height is the same as the container's */
-  object-fit: contain; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
-  border-radius: 8px; /* Optional: Matches the container's border-radius */
-  background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
-}
 
+    .product img {
+      width: 100%; /* Ensures the image width is the same as the container's */
+      height: 100%; /* Ensures the image height is the same as the container's */
+      object-fit: cover; /* Scales the image to be as large as possible, maintaining aspect ratio without cropping or stretching */
+      border-radius: 8px; /* Optional: Matches the container's border-radius */
+      background-color: #f8f8f8; /* Optional: Background color for the unfilled parts of the container */
+    }
 
     .product:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(255, 0, 140, 0.445);
     }
+
     @media only screen and (max-width: 600px) {
       .container {
-        padding: 0; /* Adjusted padding */
+        padding: 25px; /* Adjusted padding */
       }
       .product {
         width: calc(33.33% - 10px); /* Adjusted width for 3 products per row with spacing */
       }
     }
-    /* Additional styles for arrows */
+
     .arrow {
       cursor: pointer;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 30px;
-      color: white;
+      font-size: 35px;
+      color: rgb(243, 61, 228);
       z-index: 1010; /* Ensure arrows are above the image */
     }
 
     .arrow.left {
-      left: 10px;
+      left: 20px;
     }
 
     .arrow.right {
-      right: 10px;
+      right: 20px;
     }
+
     .top-message {
-  text-align: center;
-  padding: 10px 0;
-  font-size: 15px;
-  background-color: #ffffff;
-  color: #333;
-  margin-bottom: 20px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+      text-align: center;
+      padding: 10px 0;
+      font-size: 15px;
+      background-color: #fad4e485;
+      color: #333;
+      margin-bottom: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.top-message a {
-  color: #007bff;
-  text-decoration: none;
-}
+    .top-message a {
+      color: #007bff;
+      text-decoration: none;
+    }
 
-.top-message a:hover {
-  text-decoration: underline;
-}
-
-
+    .top-message a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
